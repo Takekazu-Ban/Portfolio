@@ -1,0 +1,26 @@
+<h2>サークル一覧</h2>
+<table class="table">
+      <tr>
+        <% @circles.each do |circle| %>
+          <td><strong><%= circle.circle_name %></strong></td>
+          <td>ジャンル：<%= circle.genre %></td>
+          <td>
+            <%= link_to admins_circle_path(circle.id) do %>
+              <%= attachment_image_tag circle, :circle_img, :fill, 60, 60, format: 'jpeg' %>
+            <% end %>
+          </td>
+          <td>地域：<%= circle.active_area %></td>
+          <td>メンバー数：<%=  %></td>
+        
+
+        <td>
+          <% @users.each do |user| %>
+            <%= link_to admins_user_path(user.id) do %>
+            <%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg' , class: "img-circle",fallback: "no_image.jpeg",size:"60x60" %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+</table>
+<%= paginate @circles %>

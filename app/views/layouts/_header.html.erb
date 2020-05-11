@@ -1,0 +1,62 @@
+<div class="wrapper">
+
+    <div class="push"></div>
+  </div>
+
+<header class="navbar navbar-header ">
+    <% if user_signed_in? %>
+      <nav class='nav navbar-nav navbar-left' >
+        <%= link_to user_home_path(current_user.id) do %>
+          <%= image_tag "MEMBERS.jpeg", size: "100x100" %>
+        <% end %>
+      </nav>
+
+      <nav class='nav navbar-nav navbar-right' >
+        <%= link_to user_path(current_user.id) do %>
+          <%= attachment_image_tag @user, :profile_image, :fill, 70, 70, format: 'jpeg',fallback: "no_image.jpeg",size:
+    "90x90" , class: "img-circle" %>
+        <% end %>
+        <%= link_to "サークル作成", new_users_circle_path(current_user.id), class: "btn btn-info" %>
+        <%= link_to "主催サークル",root_path(current_user.id), class: "btn btn-info" %>
+        <%= link_to "参加サークル", root_path(current_user.id), class: "btn btn-info" %>
+        <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-danger", method: :delete %>
+      </nav>
+
+      <% elsif !user_signed_in? %>
+      <nav class='nav navbar-nav navbar-left' >
+        <%= link_to root_path do %>
+          <%= image_tag "MEMBERS.jpeg", size: "100x100" %>
+        <% end %>
+      </nav>
+      <nav class='nav navbar-nav navbar-right' >
+        <%= link_to "新規登録",new_user_registration_path, class: "btn btn-info" %>
+        <%= link_to "ログイン",new_user_session_path, class: "btn btn-info" %>
+      </nav>
+
+    <% elsif admin_signed_in? %>
+      <nav class='nav navbar-nav navbar-left' >
+        <%= link_to home_admin_path do %>
+          <%= image_tag "MEMBERS.jpeg", size: "100x100" %>
+        <% end %>
+      </nav>
+      <nav class='nav navbar-nav navbar-right' >
+        <%= link_to "サークル一覧",radmins_circles_path, class: "btn btn-info" %>
+        <%= link_to "会員一覧", admins_users_path, class: "btn btn-info" %>
+        <%= link_to "ログアウト", destroy_admin_session_path, class: "btn btn-danger", method: :delete %>
+      </nav>
+
+    <% elsif !admin_signed_in? %>
+      <nav class='nav navbar-nav navbar-left' >
+        <%= link_to new_admin_session_path do %>
+          <%= image_tag "MEMBERS.jpeg", size: "100x100" %>
+        <% end %>
+      </nav>
+      <nav class='nav navbar-nav navbar-right' >
+        <%= link_to "ログイン",new_admin_session_path, class: "btn btn-info" %>
+      </nav>
+
+    
+
+
+    <% end %>
+</header>

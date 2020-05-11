@@ -1,0 +1,18 @@
+<div class="row leave-text">
+  <div class="col-xs-12">
+    <p class="leave-confirm">本当に退会しますか？</p>
+  </div>
+
+  <div>
+    <p>
+      退会すると会員登録情報は、削除され<br>
+      これまでの全てのサークル活動ができなくなります。<br>
+      退会する場合は、「退会する」をクリックしてください。
+    </p>
+  </div>
+</div>
+
+<div class="row leave-link">
+  <%= link_to "退会しない", user_home_path, class: "btn btn-primary" %>
+  <%= link_to "退会する", user_delete_path(current_user), method: :patch, class: "btn btn-danger" %>
+</div>

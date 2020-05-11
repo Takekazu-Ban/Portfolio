@@ -1,0 +1,32 @@
+<%= form_for [:users, @circle] do |circle| %>
+  <h2><%= @circle.circle_name %></h2>
+  <%= circle.label :genre, "ジャンル" %>
+  <%= @circle.genre %>
+  <%= circle.label :circle_img, "サークルイメージ画像" %>
+  <%= attachment_image_tag @circle, :circle_img, :fill, 300, 300, format: 'jpeg' %>
+  <%= circle.label :explanation, "説明文" %>
+  <%= @circle.explanation %>
+
+  <%#= link_to user_path(@user.id) do %>
+    <%= attachment_image_tag @user, :profile_image, :fill, 70, 70, format: 'jpeg',fallback: "no_image.jpeg",size:
+    "90x90" , class: "img-circle" %>
+  <%# end %>
+
+  <%= circle.label :active_area, "メンバー" %>:
+  <%= @circle.count %>人
+  <%= circle.label :active_area, "活動地域" %>
+  <%= @circle.active_area %>
+  <%= circle.label :area_show, "活動地域詳細" %>
+  <%= @circle.area_show %>
+  <%= circle.label :age_group, "募集年齢層" %>
+  <%= @circle.age_group %>
+  <%= circle.label :recruitment, "募集人数" %>
+  <%= @circle.recruitment %>
+  <%= circle.label :cost, "費用" %> ¥
+  <%= @circle.cost %>
+  <% if current_user %>
+    <%= link_to "編集する", edit_users_circle_path(current_user.id), class: "btn btn-info" %>
+  <% else %>
+    <%= link_to "参加する", class: "btn btn-info" %>
+  <% end %>
+<% end %>

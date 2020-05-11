@@ -1,0 +1,35 @@
+<h2>新規サークル作成</h2>
+  <%= form_for [:users, @circle] do |circle| %>
+
+    <%= circle.label :genre, "ジャンル" %> (必項)
+    <%= circle.select :genre, Circle.genres.keys, {prompt: '選択して下さい'} %>
+
+    <%= circle.label :circle_name, "サークル名" %> (必項)
+    <%= circle.text_field :circle_name %>
+
+    <%= circle.label :circle_img, "サークルイメージ画像" %>
+    <%= attachment_image_tag @circle, :circle_img, :fill, 300, 300, format: 'jpeg',fallback: "no_image.jpeg",size:
+    "300x300" %>
+    <%= circle.attachment_field :circle_img %>
+
+    <%= circle.label :explanation, "説明文" %> (必項)
+    <%= circle.text_area :explanation %>
+
+    <%= circle.label :active_area, "活動地域" %> (必項)
+    <%= circle.select :active_area, Circle.active_areas.keys, {prompt: '選択して下さい'} %>
+
+    <%= circle.label :area_show, "活動地域詳細" %>
+    <%= circle.text_field :area_show %>
+
+
+    <%= circle.label :age_group, "募集年齢層" %> (必項)
+    <%= circle.select :age_group, [["指定しない","指定しない"],["20代","遊ぶ"],["30代","30代"],["40代","40代"],["50代以上","50代以上"]], include_blank: "選択して下さい" %>
+
+    <%= circle.label :recruitment, "募集人数" %>
+    <%= circle.number_field :recruitment, min: 1 %> 人
+
+    <%= circle.label :cost, "費用" %> ¥
+    <%= circle.number_field :cost %>
+
+    <%= circle.submit('サークル作成', class: "btn btn-primary") %>
+  <% end %>

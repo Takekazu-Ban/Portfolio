@@ -1,0 +1,26 @@
+<h2>会員情報編集</h2>
+<%= form_for(@user) do |profile| %>
+  <%= profile.label :profile_image, "プロフィール画像" %>
+  <%= attachment_image_tag @user, :profile_image, :fill, 300, 300, format: 'jpeg' , class: "img-circle" %>
+  <%= profile.attachment_field :profile_image, class: "img-circle" %>
+
+  <%= profile.label :nickname, "ニックネーム" %>
+  <%= profile.text_field :nickname %>
+
+  <%= profile.label :gender, "性別" %>
+  <%= profile.radio_button :gender, "男性" %> 男性
+  <%= profile.radio_button :gender, "女性" %> 女性
+
+
+  <%= profile.label :age, "年齢" %>
+  <%= profile.number_field :age, min: 20 %>
+
+  <%= profile.label :email, "メールアドレス" %>
+  <%= profile.email_field :email %>
+
+  <%= profile.label :introduction, "自己紹介" %>
+  <%= profile.text_area :introduction %>
+
+  <%= profile.submit "更新する", class: "btn btn-primary" %>
+  <%= link_to "退会する", user_leave_path(@user.id), class: "btn btn-danger" %>
+<% end %>

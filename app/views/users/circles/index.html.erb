@@ -1,0 +1,26 @@
+<!-- 検索フォーム -->
+<h4>サークルを検索</h4>
+<%= form_tag(users_circle_index_path, :method => 'get') do %>
+  <%= text_field_tag :search %>
+  年齢層
+  <%= select_tag "age_group", options_for_select([["指定しない","指定しない"],["20代","遊ぶ"],["30代","30代"],["40代","40代"],["50代以上","50代以上"]]) %>
+  <%= submit_tag '検索', :circle_name => nil %>
+<% end %>
+
+<!-- サークル一覧フォーム -->
+<table class="table">
+  <% @circles.each do |circle| %>
+      <tr>
+        <td><strong><%= circle.circle_name %></strong></td>
+        <td>ジャンル：<%= circle.genre %></td>
+        <td>
+          <%= link_to users_circle_path(circle.id) do %>
+          <%= attachment_image_tag circle, :circle_img, :fill, 60, 60, format: 'jpeg' %>
+          <% end %>
+          </td>
+        <td>地域：<%= circle.active_area %></td>
+        <td>メンバー数：<%=  %></td>
+      </tr>
+  <% end %>
+</table>
+<%= paginate @circles %>

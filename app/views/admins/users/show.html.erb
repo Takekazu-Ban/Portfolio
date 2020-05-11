@@ -1,0 +1,15 @@
+<h2>会員情報</h2>
+<%= link_to "メンバーを退会させる", user_delete_path(@user.id), class: 'btn btn-primary' %>
+<label for="profile_image"> プロフィール画像 </label>
+<%= attachment_image_tag @user, :profile_image, :fill, 300, 300, format: 'jpeg' , class: "img-circle" %>
+<label for="nickname"> ニックネーム </label>
+<%= @user.nickname %>
+<label for="gender"> 性別 </label>
+<%= @user.gender %>
+<label for="age"> 年齢 </label>
+<%= @user.age %>歳
+
+<label for="introduction"> 自己紹介 </label>
+<%= @user.introduction %>
+
+

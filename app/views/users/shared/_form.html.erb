@@ -1,0 +1,23 @@
+<div class="field">
+  <%= f.label :プロフィール画像 %>(必項)
+  <%= f.file_field :profile_image %>
+</div>
+<div class="field">
+  <%= f.label :ニックネーム %>(必項)
+  <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
+</div>
+
+<div class="field">
+  <%= f.label :性別 %>(必項)
+  <label>
+    <%= f.radio_button :gender, "男性" %> 男性
+  </label>
+  <label>
+    <%= f.radio_button :gender, "女性" %> 女性
+  </label>
+</div>
+
+<div class="field">
+  <%= f.label :年齢 %>(必項)
+  <%= f.text_field :age, min: 20, autofocus: true, autocomplete: "age" %>歳
+</div>
