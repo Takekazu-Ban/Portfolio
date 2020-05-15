@@ -1,0 +1,31 @@
+<%= render 'users/circles/organizer_list' %>
+
+<div class="chat_field">
+  <div class="ballooon">
+    <div class="host_chat_field">
+      <% @messages.each do |messe| %>
+        <div class="wrapper">
+          <div class="mycomment">
+            <p><%= messe.message %></p>
+          </div>
+          <div>
+            <%= attachment_image_tag messe.user, :profile_image, format: 'jpeg',fallback: "no_image.jpeg",size:
+    "30x30" , class: "img-circle" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+    <div class="host_chat">
+      <%= form_for [:users, @message] do |messe| %>
+        <%= messe.text_field :message %>
+        <%= messe.submit'送信' %>
+      <% end %>
+    </div>
+
+
+
+

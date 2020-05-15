@@ -1,9 +1,7 @@
-.user_top img{
-	position: absolute;
-     width: auto;
-     height: auto;
+h2,h3 {
+  text-align:center;
 }
 
 .explanation {
-	margin-top: 45%;
+  margin-left: 20%;
 }

@@ -1,0 +1,2 @@
+module Users::HostCirclesHelper
+end

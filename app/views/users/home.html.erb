@@ -1,12 +1,18 @@
-<div class="user_top">
-  <div class="home_image">
-    <#img src="/assets/user_top.jpeg">
-  </div>
+<div class="row">
+  <div class="col-xs-8">
+    <h5>新着サークル</h5>
+    <%= render 'users/home_list',circles: @circles %>
 
-  <div class="serch_field">
-      <%= submit_tag "検索" %>
-      <%= link_to "サークル一覧", class: "btn btn-primary" %>
+    <h5>人気サークル</h5>
+    <%= render 'users/home_list',circles: @circles %>
+
+    <h5>オススメサークル</h5>
+    <%= render 'users/home_list',circles: @circles %>
+
+    <div class="serch_field">
+      <%= link_to "=>サークル一覧へ", users_circle_index_path(@circle.ids), method: :get %>
+    </div>
+  </div>
+  <div class="col-xs-4">
   </div>
 </div>
-
-/users/circles/:circle_id/index(.:format)

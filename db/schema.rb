@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_05_123904) do
+ActiveRecord::Schema.define(version: 2020_05_11_142103) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -37,6 +37,22 @@ ActiveRecord::Schema.define(version: 2020_05_05_123904) do
     t.integer "cost"
     t.integer "count"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "host_circles", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "circle_id"
+    t.integer "join_id"
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "joins", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "circle_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

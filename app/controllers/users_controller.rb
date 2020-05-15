@@ -3,12 +3,14 @@ class UsersController < ApplicationController
   before_action :screen_user, only: [:edit, :update, :delete]
 
   def home
+    @circle = Circle.all
+    @circles = Circle.all.order(created_at: :desc).limit(5)#.page(params[:page]).per(2)
   end
 
   def show
     @user = User.find(params[:id])
-    #@circles = Circle.all.page(params[:page]).per(5)
     @circles = @user.circles.page(params[:page]).per(5)
+    @circles1 = @user.circle_joins
   end
 
   def edit
@@ -33,6 +35,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:profile_image, :nickname, :gender, :age, :introduction, :email, :encrypted_password, :circle_img)
+    params.require(:user).permit(:profile_image, :nickname, :gender, :age, :introduction, :email, :encrypted_password, :circle_img, :join_circle)
   end
 end

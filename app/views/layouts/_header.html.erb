@@ -1,9 +1,5 @@
-<div class="wrapper">
 
-    <div class="push"></div>
-  </div>
-
-<header class="navbar navbar-header ">
+<header class="navbar navbar-header navbar-dark bg-primary">
     <% if user_signed_in? %>
       <nav class='nav navbar-nav navbar-left' >
         <%= link_to user_home_path(current_user.id) do %>
@@ -13,11 +9,11 @@
 
       <nav class='nav navbar-nav navbar-right' >
         <%= link_to user_path(current_user.id) do %>
-          <%= attachment_image_tag @user, :profile_image, :fill, 70, 70, format: 'jpeg',fallback: "no_image.jpeg",size:
+          <%= attachment_image_tag current_user, :profile_image, :fill, 70, 70, format: 'jpeg',fallback: "no_image.jpeg",size:
     "90x90" , class: "img-circle" %>
         <% end %>
         <%= link_to "サークル作成", new_users_circle_path(current_user.id), class: "btn btn-info" %>
-        <%= link_to "主催サークル",root_path(current_user.id), class: "btn btn-info" %>
+        <%= link_to "主催サークル",users_host_circle_path(current_user.id), class: "btn btn-info" %>
         <%= link_to "参加サークル", root_path(current_user.id), class: "btn btn-info" %>
         <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-danger", method: :delete %>
       </nav>
@@ -54,9 +50,6 @@
       <nav class='nav navbar-nav navbar-right' >
         <%= link_to "ログイン",new_admin_session_path, class: "btn btn-info" %>
       </nav>
-
-    
-
 
     <% end %>
 </header>

@@ -1,0 +1,21 @@
+<h2>主催サークル</h2>
+<table class="table">
+  <% @circles.each do |circle| %>
+      <tr>
+        <td><strong><%= circle.circle_name %></strong></td>
+        <td>ジャンル：<%= circle.genre %></td>
+        <td>
+          <%= link_to users_circle_path(circle.id) do %>
+          <%= attachment_image_tag circle, :circle_img, :fill, 60, 60, format: 'jpeg' %>
+          <% end %>
+          </td>
+        <td>地域：<%= circle.active_area %></td>
+        <td>メンバー数：<%= circle.circle_joins.count %></td>
+        <% if current_user == circle.user %>
+          <td><%= link_to "編集", edit_users_circle_path(circle.id) %></td>
+          <td><%= link_to "解散", users_circle_path(circle.id), method: :delete %></td>
+        <% end %>
+      </tr>
+  <% end %>
+</table>
+<%= paginate @circles %>

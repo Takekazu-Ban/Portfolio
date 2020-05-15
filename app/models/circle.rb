@@ -1,13 +1,20 @@
 class Circle < ApplicationRecord
   belongs_to :user
+  has_many :circle_joins, class_name: "Join"
   attachment :circle_img
 
+  # 検索機能
   def self.search(search)
     if search
       where(['circle_name LIKE ?', "%#{search}%"])
     else
       all
     end
+  end
+
+  #サークル参加してるか？
+  def joined_by?(user)
+    circle_joins.where(user_id: user.id).exists?
   end
 
   enum active_areas: {北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

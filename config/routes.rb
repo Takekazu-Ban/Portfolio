@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'join/create'
+  get 'join/destroy'
   devise_for :admins, controllers: {
   	sessions: 'admins/sessions',
   	passwords: 'admins/passwords',
@@ -24,12 +26,11 @@ resources :admins, only: [] do
 end
 
   namespace :users do
-  resources :circles, only: [:new, :index, :edit, :show, :create, :update, :destroy] do
+  resources :circles, only: [:new, :edit, :show, :create, :update, :destroy] do
+    resource :joins, only: [:create, :destroy]
     get :index
-    get :search
   end
-  resources :host_circles, only: [:show, :update]
-  resources :join_circles, only: [:show]
+  resources :host_circles, only: [:show, :create]
   resources :messages, only: [:crete]
 end
 
