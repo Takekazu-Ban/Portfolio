@@ -22,39 +22,25 @@
 .balloon {
   width: 100%;
   margin: 10px 0;
-  overflow: scroll;
 }
 
-
-.mycomment {
-  margin: 10px 0;
+/*------ 自分のメッセージ ------*/
+.my_comment {
+  float: right;
+  margin: 10px 0 10px auto;
 }
 
-.mycomment p {
+.my_comment p {
   display: inline-block;
   position: relative;
   margin: 0 10px 0 0;
   padding: 8px;
   max-width: 250px;
   border-radius: 12px;
-
   background: #30e852;
-
 }
 
-.mycomment you {
-  display: inline-block;
-  position: relative;
-  margin: 0 10px 0 0;
-  padding: 8px;
-  max-width: 250px;
-  border-radius: 12px;
-  
-  background: #FFF;
-  
-}
-
-.mycomment p:after {
+.my_comment p:after {
   content: "";
   position: absolute;
   top: 3px;
@@ -65,6 +51,38 @@
   transform: rotate(-35deg);
 }
 
+/*------ 相手のメッセージ ------*/
+.you_icon {
+  float: left;
+  margin-right: 10px;
+}
+
+.you_comment {
+  margin: 10px 0;
+}
+
+.you_comment p {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #FFF;
+}
+
+.you_comment p:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #FFF;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+
+
 .host_chat{
   height: 50px;
   width: 35%;
@@ -72,3 +90,4 @@
   text-align: center;
   background: #003399;
 }
+

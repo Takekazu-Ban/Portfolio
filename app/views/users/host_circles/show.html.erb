@@ -1,20 +1,29 @@
 <%= render 'users/circles/organizer_list' %>
 
 <div class="chat_field">
-  <div class="ballooon">
-    <div class="host_chat_field">
+  <div class="balloon">
       <% @messages.each do |messe| %>
         <div class="wrapper">
-          <div class="mycomment">
-            <p><%= messe.message %></p>
-          </div>
-          <div>
-            <%= attachment_image_tag messe.user, :profile_image, format: 'jpeg',fallback: "no_image.jpeg",size:
+          <% if messe.user == current_user %>
+            <div class="my_comment">
+              <p><%= messe.message %></p>
+            </div>
+            <div class="my_icon">
+              <%= attachment_image_tag messe.user, :profile_image, format: 'jpeg',fallback: "no_image.jpeg",size:
     "30x30" , class: "img-circle" %>
-          </div>
+            </div>
+
+          <% else %>
+            <div class="you_icon">
+              <%= attachment_image_tag messe.user, :profile_image, format: 'jpeg',fallback: "no_image.jpeg",size:
+    "30x30" , class: "img-circle" %>
+            </div>
+            <div class="you_comment">
+              <p><%= messe.message %></p>
+            </div>
+            <% end %>
         </div>
       <% end %>
-    </div>
   </div>
 </div>
 

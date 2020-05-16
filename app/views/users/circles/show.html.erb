@@ -36,5 +36,6 @@
       <%= link_to "サークルに参加する", users_circle_joins_path(@circle.id), method: :POST, class: "btn btn-info" %>
     <% end %>
   <% end %>
+  <%= link_to "サークル一覧へ", users_circle_index_path(@circle.id), method: :get, class: "btn btn-info" %>
 
 <% end %>

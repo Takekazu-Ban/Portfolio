@@ -5,12 +5,13 @@ class UsersController < ApplicationController
   def home
     @circle = Circle.all
     @circles = Circle.all.order(created_at: :desc).limit(5)#.page(params[:page]).per(2)
+    @circles1 = Circle.find(Join.group(:circle_id).order('count(circle_id) desc').limit(5).pluck(:circle_id))
   end
 
   def show
     @user = User.find(params[:id])
     @circles = @user.circles.page(params[:page]).per(5)
-    @circles1 = @user.circle_joins
+    @circles1 = current_user.circle_joins
   end
 
   def edit
@@ -35,6 +36,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:profile_image, :nickname, :gender, :age, :introduction, :email, :encrypted_password, :circle_img, :join_circle)
+    params.require(:user).permit(:profile_image, :nickname, :gender, :age, :introduction, :email, :encrypted_password, :circle_img)
   end
 end

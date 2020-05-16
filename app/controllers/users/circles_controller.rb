@@ -4,7 +4,7 @@ class Users::CirclesController < ApplicationController
   end
 
   def index
-    age_group_ids = Circle.where("age_group = ?", params[:age_group]).pluck(:id)
+    genre_ids = Circle.where("genre = ?", params[:genre]).pluck(:id)
      @circles = Circle.all.page(params[:page]).per(5).search(params[:search])
   end
 
