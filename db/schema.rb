@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_11_142103) do
+ActiveRecord::Schema.define(version: 2020_05_17_132652) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -20,13 +20,14 @@ ActiveRecord::Schema.define(version: 2020_05_11_142103) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
   create_table "circles", force: :cascade do |t|
-    t.string "genre"
-    t.string "active_area"
+    t.integer "genre"
+    t.integer "active_area"
     t.string "age_group"
     t.string "circle_name"
     t.string "circle_img_id"
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_05_11_142103) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "admin_id"
   end
 
   create_table "host_circles", force: :cascade do |t|
@@ -55,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_05_11_142103) do
     t.integer "circle_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "admin_id"
   end
 
   create_table "users", force: :cascade do |t|

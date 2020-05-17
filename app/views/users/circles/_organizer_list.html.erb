@@ -1,16 +1,26 @@
-<h2>主催サークル</h2>
+<h3>主催サークル</h3>
 <table class="table">
   <% @circles.each do |circle| %>
+       <tr>
+        <th>
+          <strong><%= circle.circle_name %></strong>
+        </th>
+      </tr>
       <tr>
-        <td><strong><%= circle.circle_name %></strong></td>
-        <td>ジャンル：<%= circle.genre %></td>
         <td>
-          <%= link_to users_circle_path(circle.id) do %>
-          <%= attachment_image_tag circle, :circle_img, :fill, 60, 60, format: 'jpeg' %>
+          <% if controller.controller_name == 'host_circles' && controller.action_name == 'show' %>
+            <%= link_to users_host_circle_path(current_user.id) do %>
+              <%= attachment_image_tag circle, :circle_img, :fill, 80, 60, format: 'jpeg' %>
+            <% end %>
+            <% else %>
+            <%= link_to users_circle_path(circle.id) do %>
+              <%= attachment_image_tag circle, :circle_img, :fill, 80, 60, format: 'jpeg' %>
+            <% end %>
           <% end %>
-          </td>
-        <td>地域：<%= circle.active_area %></td>
-        <td>メンバー数：<%= circle.circle_joins.count %></td>
+        </td>
+       <td>ジャンル：<%= circle.genre %><br>
+        メンバー数：<%= circle.circle_joins.count %>人　地域：<%= circle.active_area %></td>
+        <td>
         <% if current_user == circle.user %>
           <td><%= link_to "編集", edit_users_circle_path(circle.id) %></td>
           <td><%= link_to "解散", users_circle_path(circle.id), method: :delete %></td>

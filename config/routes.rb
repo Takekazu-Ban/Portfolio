@@ -27,7 +27,7 @@ end
 
   namespace :users do
   resources :circles, only: [:new, :edit, :show, :create, :update, :destroy] do
-    resource :joins, only: [:create, :destroy]
+    resources :joins, only: [:index, :show, :create, :destroy]
     get :index
   end
   resources :host_circles, only: [:show, :create]

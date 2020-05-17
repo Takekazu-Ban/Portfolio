@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :screen_user, only: [:edit, :update, :delete]
+  #before_action :screen_user, only: [:edit, :update, :delete]
 
   def home
     @circle = Circle.all
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @circles = @user.circles.page(params[:page]).per(5)
-    @circles1 = current_user.circle_joins
+    @circles_joined = current_user.joined_circles.page(params[:page]).per(5)
   end
 
   def edit

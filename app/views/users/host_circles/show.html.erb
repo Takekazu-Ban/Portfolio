@@ -1,5 +1,9 @@
-<%= render 'users/circles/organizer_list' %>
+<div class="row">
+  <div class="col-xs-7">
+    <%= render 'users/circles/organizer_list' %>
+  </div>
 
+<div class="col-xs-5">
 <div class="chat_field">
   <div class="balloon">
       <% @messages.each do |messe| %>
@@ -34,7 +38,9 @@
         <%= messe.submit'送信' %>
       <% end %>
     </div>
-
+    </div>
+</div>
+</div>
 
 
 

@@ -1,6 +1,7 @@
 <h2>メンバー 一覧</h2>
-<table class="table">
-  <% @users.each do |user| %>
+<div class="admin_list">
+  <table class="table">
+    <% @users.each do |user| %>
       <tr>
         <td><strong><%= user.nickname %></strong></td>
         <td>
@@ -12,6 +13,7 @@
         <td>性別：<%= user.gender %></td>
         <td>年齢：<%= user.age %>歳</td>
       </tr>
-  <% end %>
-</table>
+    <% end %>
+  </table>
 <%= paginate @users %>
+</div>

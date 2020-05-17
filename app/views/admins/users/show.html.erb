@@ -1,15 +1,36 @@
-<h2>会員情報</h2>
-<%= link_to "メンバーを退会させる", user_delete_path(@user.id), class: 'btn btn-primary' %>
-<label for="profile_image"> プロフィール画像 </label>
-<%= attachment_image_tag @user, :profile_image, :fill, 300, 300, format: 'jpeg' , class: "img-circle" %>
-<label for="nickname"> ニックネーム </label>
-<%= @user.nickname %>
-<label for="gender"> 性別 </label>
-<%= @user.gender %>
-<label for="age"> 年齢 </label>
-<%= @user.age %>歳
+<div class="row">
+  <div class="col-xs-6">
+    <h2>プロフィール</h2>
+      <div class="profile">
+        <%= attachment_image_tag @user, :profile_image, :fill, 180, 180, format: 'jpeg' , class: "img-circle" %>
+        
+    <%= link_to "メンバーを退会させる", " /admins/users/#{@user.id}", method: :delete, class: 'btn btn-primary' %><br>
 
-<label for="introduction"> 自己紹介 </label>
-<%= @user.introduction %>
+    <table class="table">
+          <tr>
+            <th> ニックネーム :</th>
+            <td> <%= @user.nickname %> </td>
+          </tr>
+          <tr>
+            <th> 性別 :</th>
+            <td> <%= @user.gender %> </td>
+          </tr>
+          <tr>
+            <th> 年齢 :</th>
+            <td> <%= @user.age %>歳 </td>
+          </tr>
+        </table>
+        
+            <div class="introduction">
+              <label for="introduction"> 自己紹介 </label>
+              <%= @user.introduction %>
+            </div>
+      </div>
+  </div>
+  
 
-
+  <div class="col-xs-6">
+    <%= render 'users/circles/organizer_list' %>
+    <%= render 'users/circles/joined_list' %>
+  </div>
+</div>

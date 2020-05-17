@@ -14,7 +14,8 @@
         <% end %>
         <%= link_to "サークル作成", new_users_circle_path(current_user.id), class: "btn btn-info" %>
         <%= link_to "主催サークル",users_host_circle_path(current_user.id), class: "btn btn-info" %>
-        <%= link_to "参加サークル", root_path(current_user.id), class: "btn btn-info" %>
+         <%#= link_to "主催サークル",users_host_circles_path(@circles.ids), class: "btn btn-info" %>
+        <%= link_to "参加サークル", users_circle_joins_path(current_user.id), class: "btn btn-info" %>
         <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-danger", method: :delete %>
       </nav>
 
@@ -31,7 +32,7 @@
 
     <% elsif admin_signed_in? %>
       <nav class='nav navbar-nav navbar-left' >
-        <%= link_to home_admin_path do %>
+        <%= link_to admin_home_path(current_user.id) do %>
           <%= image_tag "MEMBERS.jpeg", size: "100x100" %>
         <% end %>
       </nav>
