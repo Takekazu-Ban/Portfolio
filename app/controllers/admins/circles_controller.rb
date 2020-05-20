@@ -7,7 +7,12 @@ class Admins::CirclesController < ApplicationController
   def show
     @circle = Circle.find(params[:id])
     @users = User.all
-    @user = User.find(params[:id])
+  end
+
+  def destroy
+    circle = Circle.find(params[:id])
+    circle.destroy
+    redirect_to admins_circles_path
   end
 
   private

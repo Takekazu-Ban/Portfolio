@@ -3,7 +3,7 @@
     <h2>プロフィール</h2>
       <div class="profile">
         <%= attachment_image_tag @user, :profile_image, :fill, 180, 180, format: 'jpeg' , class: "img-circle" %>
-        
+
         <% if current_user == @user %>
           <%= link_to "会員編集", edit_user_path(@user.id), class: 'btn btn-primary' %>
         <% end %><br>
@@ -29,7 +29,6 @@
             </div>
       </div>
   </div>
-  
 
   <div class="col-xs-6">
     <%= render 'users/circles/organizer_list' %>

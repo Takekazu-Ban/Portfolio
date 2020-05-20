@@ -1,17 +1,17 @@
-<div class="field">
+<div class="field_new">
   <tr>
     <td><%= f.label :プロフィール画像 %>(必項)</td>
     <td><%= f.file_field :profile_image %></td>
   </tr>
 </div>
-<div class="field">
+<div class="field_new">
   <tr>
     <td><%= f.label :ニックネーム %>(必項)</td>
     <td><%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %></td>
   </tr>
 </div>
 
-<div class="field">
+<div class="field_new">
   <tr>
     <td><%= f.label :性別 %>(必項)</td>
   <td>
@@ -25,7 +25,7 @@
   </tr>
 </div>
 
-<div class="field">
+<div class="field_new">
   <tr>
     <td><%= f.label :年齢 %>(必項)</td>
     <td><%= f.text_field :age, min: 20, autofocus: true, autocomplete: "age" %>歳</td>

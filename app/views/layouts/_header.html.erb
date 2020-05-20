@@ -1,5 +1,6 @@
 
 <header class="navbar navbar-header navbar-dark bg-primary">
+    <!-- Userログイン後 -->
     <% if user_signed_in? %>
       <nav class='nav navbar-nav navbar-left' >
         <%= link_to user_home_path(current_user.id) do %>
@@ -14,12 +15,36 @@
         <% end %>
         <%= link_to "サークル作成", new_users_circle_path(current_user.id), class: "btn btn-info" %>
         <%= link_to "主催サークル",users_host_circle_path(current_user.id), class: "btn btn-info" %>
-         <%#= link_to "主催サークル",users_host_circles_path(@circles.ids), class: "btn btn-info" %>
-        <%= link_to "参加サークル", users_circle_joins_path(current_user.id), class: "btn btn-info" %>
+        <%= link_to "参加サークル", users_host_circle_joining_show_path(current_user.id), class: "btn btn-info" %>
         <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-danger", method: :delete %>
       </nav>
 
-      <% elsif !user_signed_in? %>
+    <!-- Adminログイン後 -->
+    <% elsif admin_signed_in? %>
+      <nav class='nav navbar-nav navbar-left' >
+        <%= link_to admin_home_path(current_admin.id) do %>
+          <%= image_tag "MEMBERS.jpeg", size: "100x100" %>
+        <% end %>
+      </nav>
+      <nav class='nav navbar-nav navbar-right' >
+        <%= link_to "サークル一覧",admins_circles_path, class: "btn btn-info" %>
+        <%= link_to "会員一覧", admins_users_path, class: "btn btn-info" %>
+        <%= link_to "ログアウト", destroy_admin_session_path, class: "btn btn-danger", method: :delete %>
+      </nav>   
+
+    <!-- Adminログイン前 -->   
+    <% elsif (controller.controller_name == 'admins') || current_page?('/admins/sign_in') || current_page?('/admins/password/new') %>
+      <nav class='nav navbar-nav navbar-left' >
+        <%= link_to top_admin_path do %>
+          <%= image_tag "MEMBERS.jpeg", size: "100x100" %>
+        <% end %>
+      </nav>
+      <nav class='nav navbar-nav navbar-right' >
+        <%= link_to "ログイン",new_admin_session_path, class: "btn btn-info" %>
+      </nav>
+
+    <!-- Userログイン前 -->  
+    <% else %>
       <nav class='nav navbar-nav navbar-left' >
         <%= link_to root_path do %>
           <%= image_tag "MEMBERS.jpeg", size: "100x100" %>
@@ -28,28 +53,6 @@
       <nav class='nav navbar-nav navbar-right' >
         <%= link_to "新規登録",new_user_registration_path, class: "btn btn-info" %>
         <%= link_to "ログイン",new_user_session_path, class: "btn btn-info" %>
-      </nav>
-
-    <% elsif admin_signed_in? %>
-      <nav class='nav navbar-nav navbar-left' >
-        <%= link_to admin_home_path(current_user.id) do %>
-          <%= image_tag "MEMBERS.jpeg", size: "100x100" %>
-        <% end %>
-      </nav>
-      <nav class='nav navbar-nav navbar-right' >
-        <%= link_to "サークル一覧",radmins_circles_path, class: "btn btn-info" %>
-        <%= link_to "会員一覧", admins_users_path, class: "btn btn-info" %>
-        <%= link_to "ログアウト", destroy_admin_session_path, class: "btn btn-danger", method: :delete %>
-      </nav>
-
-    <% elsif !admin_signed_in? %>
-      <nav class='nav navbar-nav navbar-left' >
-        <%= link_to new_admin_session_path do %>
-          <%= image_tag "MEMBERS.jpeg", size: "100x100" %>
-        <% end %>
-      </nav>
-      <nav class='nav navbar-nav navbar-right' >
-        <%= link_to "ログイン",new_admin_session_path, class: "btn btn-info" %>
       </nav>
 
     <% end %>

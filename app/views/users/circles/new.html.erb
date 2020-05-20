@@ -37,7 +37,6 @@
 
 
     <%= circle.label :age_group, "募集年齢層" %> (必項)
-    <%#= circle.select :age_group, [["指定しない","指定しない"],["20代","20代"],["30代","30代"],["40代","40代"],["50代以上","50代以上"]], include_blank: "選択して下さい" %>
     <%= circle.select :age_group, Circle.age_groups.keys, {prompt: '選択して下さい'} %>
 
     <%= circle.label :recruitment, "募集人数" %>

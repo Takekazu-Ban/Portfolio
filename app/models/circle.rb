@@ -1,7 +1,8 @@
 class Circle < ApplicationRecord
   belongs_to :user
-  
-  has_many :circle_joins, class_name: "Join"
+  has_many  :host_circles
+  has_many :circle_joins, class_name: "Join", dependent: :destroy
+  belongs_to :host_circle
   attachment :circle_img
 
   #キーワード検索

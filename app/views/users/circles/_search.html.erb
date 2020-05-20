@@ -1,0 +1,18 @@
+ <!-- 検索フォーム -->
+    <h4>サークルを検索</h4>
+    <div class="search_field">
+      <%= form_tag(users_circle_index_path, :method => 'get') do %>
+      <%= text_field_tag :search %><br>
+      <br>
+      ジャンル絞り込み：
+      <%= select_tag :genres, options_for_select(Circle.genres),include_blank: true %>
+      <br>
+      地域絞り込み：
+      <%= select_tag :active_areas, options_for_select(Circle.active_areas),include_blank: true %>
+      <br>
+      募集年齢層絞り込み：
+      <%= select_tag :age_groups, options_for_select(Circle.age_groups),include_blank: true %>
+      <br>
+      <%= submit_tag '検索', :circle_name => nil %>
+      <% end %>
+    </div>

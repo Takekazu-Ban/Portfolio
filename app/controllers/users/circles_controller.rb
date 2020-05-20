@@ -4,7 +4,6 @@ class Users::CirclesController < ApplicationController
   end
 
   def index
-    #@circles = Circle.all.page(params[:page]).per(5).search(params[:search])
     @circles = Circle.all.page(params[:page]).per(5).search(params[:search])
     if params[:genres].present?
       @circles = @circles.get_by_genre(params[:genres])
@@ -19,6 +18,22 @@ class Users::CirclesController < ApplicationController
 
   def show
     @circle = Circle.find(params[:id])
+  end
+
+  def host_room
+    @circles = current_user.circles.page(params[:page]).per(5)
+    @circles_joined = current_user.joined_circles.page(params[:page]).per(5)
+    @circle = Circle.find(params[:circle_id])
+    @message = HostCircle.new
+    @messages = @circle.host_circles
+  end
+
+  def join_room
+    @circles = current_user.circles.page(params[:page]).per(5)
+    @circles_joined = current_user.joined_circles.page(params[:page]).per(5)
+    @circle = Circle.find(params[:circle_id])
+    @message = HostCircle.new
+    @messages = @circle.host_circles
   end
 
   def edit

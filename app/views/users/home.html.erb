@@ -8,11 +8,11 @@
 
     <h5>オススメサークル</h5>
     <%= render 'users/home_list',circles: @circles %>
-
-    <div class="serch_field">
-      <%= link_to "=>サークル一覧へ", users_circle_index_path(@circle.ids), method: :get %>
-    </div>
   </div>
   <div class="col-xs-4">
+    <%#= render 'users/circles/search' %>
+     <div class="index_go">
+      <%= link_to "=>サークル一覧へ", users_circle_index_path(@circle.ids), method: :get %>
+    </div>
   </div>
 </div>

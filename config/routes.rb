@@ -25,12 +25,16 @@ resources :admins, only: [] do
   get :home
 end
 
-  namespace :users do
+namespace :users do
   resources :circles, only: [:new, :edit, :show, :create, :update, :destroy] do
-    resources :joins, only: [:index, :show, :create, :destroy]
+    resources :joins, only: [:create, :destroy]
     get :index
+    get :host_room
+    get :join_room
   end
-  resources :host_circles, only: [:show, :create]
+  resources :host_circles, only: [:show, :create] do
+    get :joining_show
+  end
   resources :messages, only: [:crete]
 end
 

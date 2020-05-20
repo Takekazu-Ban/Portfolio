@@ -6,14 +6,14 @@ class ApplicationController < ActionController::Base
     when User
       user_home_path(current_user.id)
     when Admin
-      home_admin_path
+      admin_home_path(resource)
     end
   end
 
   def after_sing_out_path_for(resource)
     case resource
     when Admin
-      top_admin_path
+      admin_session_path
     end
   end
 

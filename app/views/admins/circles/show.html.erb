@@ -7,10 +7,12 @@
 <%= circle.label :explanation, "説明文" %>
 <%= @circle.explanation %>
 
-  <%#= link_to user_path(@user.id) do %>
-          <%= attachment_image_tag @user, :profile_image, :fill, 70, 70, format: 'jpeg',fallback: "no_image.jpeg",size:
+  <%= link_to admins_user_path(@circle.user.id) do %>
+          <%= attachment_image_tag @circle.user, :profile_image, :fill, 70, 70, format: 'jpeg',fallback: "no_image.jpeg",size:
     "90x90" , class: "img-circle" %>
-  <%# end %>
+  <% end %>
+
+  <%= link_to "サークルを解散させる", " /admins/circles/#{@circle.id}", method: :delete, class: 'btn btn-primary' %><br>
 
 
 <%= circle.label :active_area, "活動地域" %>

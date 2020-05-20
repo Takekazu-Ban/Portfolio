@@ -1,0 +1,39 @@
+<div class="circle_name">
+ <h3> サークル名：&nbsp; <strong><%= @circle.circle_name %></strong> </h3>
+</div>
+
+<div class="chat_field">
+  <div class="balloon">
+      <% messages.each do |messe| %>
+        <div class="wrapper">
+          <% if messe.user == current_user %>
+            <div class="my_comment">
+              <p><%= messe.message %></p>
+            </div>
+            <div class="my_icon">
+              <%= attachment_image_tag messe.user, :profile_image, format: 'jpeg',fallback: "no_image.jpeg",size:
+    "30x30" , class: "img-circle" %>
+            </div>
+
+          <% else %>
+            <div class="you_icon">
+              <%= attachment_image_tag messe.user, :profile_image, format: 'jpeg',fallback: "no_image.jpeg",size:
+    "30x30" , class: "img-circle" %>
+            </div>
+            <div class="you_comment">
+              <p><%= messe.message %></p>
+            </div>
+            <% end %>
+        </div>
+      <% end %>
+  </div>
+</div>
+
+
+<div class="host_chat">
+  <%= form_for [:users, @message] do |messe| %>
+    <%= messe.text_field :message %>
+    <%= messe.hidden_field :circle_id, :value => @circle.id %>
+    <%= messe.submit'送信' %>
+  <% end %>
+</div>
