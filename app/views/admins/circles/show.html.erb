@@ -1,28 +1,71 @@
-<%= form_for [:admins, @circle] do |circle| %>
-<h2><%= @circle.circle_name %></h2>
-<%= circle.label :genre, "ジャンル" %>
-<%= @circle.genre %>
-<%= circle.label :circle_img, "サークルイメージ画像" %>
-<%= attachment_image_tag @circle, :circle_img, :fill, 300, 300, format: 'jpeg' %>
-<%= circle.label :explanation, "説明文" %>
-<%= @circle.explanation %>
+<div class="row">
+  <%= form_for [:users, @circle] do |circle| %>
+    <div class="col-xs-6">
+      <div class="circle_profile">
+        <h2><%= @circle.circle_name %></h2>
+        <div class="genre_name">
+          <%= circle.label :genre, "ジャンル：" %>
+          <%= @circle.genre %>
+        </div>
 
-  <%= link_to admins_user_path(@circle.user.id) do %>
-          <%= attachment_image_tag @circle.user, :profile_image, :fill, 70, 70, format: 'jpeg',fallback: "no_image.jpeg",size:
-    "90x90" , class: "img-circle" %>
+        <div class="circle_show_img">
+          <%= attachment_image_tag @circle, :circle_img, :fill, 418, 324, format: 'jpeg' %>
+        </div>
+
+        <div class="circle_host_img">
+          <%= link_to user_path(@circle.user.id) do %>
+        <%= attachment_image_tag @circle.user, :profile_image, :fill, 70, 70, format: 'jpeg',fallback: "no_image.jpeg",size:
+        "70x70" , class: "img-circle" %>
+      </div>
+      <% end %>
+
+        <div class="host_name">
+          <%= circle.label :nickname, "ホスト名" %><br>
+          <%= @circle.user.nickname %>
+        </div>
+      </div>
+    </div>
+
+  <div class="col-xs-6">
+    <div class="circle_item">
+      <table class="table">
+      <tr>
+        <th><%= circle.label :active_area, "メンバー" %>:</th>
+        <td><%= @circle.circle_joins.count %>人</td>
+      </tr>
+      <tr>
+        <th><%= circle.label :active_area, "活動地域" %></th>
+        <td><%= @circle.active_area %></td>
+      </tr>
+      <tr>
+        <th><%= circle.label :area_show, "活動地域詳細" %></th>
+        <td><%= @circle.area_show %></td>
+      </tr>
+      <tr>
+        <th><%= circle.label :age_group, "募集年齢層" %></th>
+        <td><%= @circle.age_group %></td>
+      </tr>
+      <tr>
+        <th><%= circle.label :recruitment, "募集人数" %></th>
+        <td><%= @circle.recruitment %></td>
+      </tr>
+      <tr>
+        <th><%= circle.label :cost, "費用" %> ¥</th>
+        <td><%= @circle.cost %></td>
+      </tr>
+      </table>
+    </div>
+
+    <div class="explanation_box">
+      <%= circle.label :explanation, "説明文" %>
+      <div class="cicle_explanation">
+        <%= @circle.explanation %>
+      </div>
+    </div>
+
+<div class="user_bottam">
+  <%= link_to "サークルを解散させる", " /admins/circles/#{@circle.id}", method: :delete, class: 'btn btn-warning' %><br>
+</div>
+  </div>
   <% end %>
-
-  <%= link_to "サークルを解散させる", " /admins/circles/#{@circle.id}", method: :delete, class: 'btn btn-primary' %><br>
-
-
-<%= circle.label :active_area, "活動地域" %>
-<%= @circle.active_area %>
-<%= circle.label :area_show, "活動地域詳細" %>
-<%= @circle.area_show %>
-<%= circle.label :age_group, "募集年齢層" %>
-<%= @circle.age_group %>
-<%= circle.label :recruitment, "募集人数" %>
-<%= @circle.recruitment %>
-<%= circle.label :cost, "費用" %> ¥
-<%= @circle.cost %>
-<% end %>
+</div>

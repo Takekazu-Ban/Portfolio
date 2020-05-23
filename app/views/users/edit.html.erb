@@ -1,26 +1,41 @@
 <h2>会員情報編集</h2>
 <%= form_for(@user) do |profile| %>
-  <%= profile.label :profile_image, "プロフィール画像" %>
-  <%= attachment_image_tag @user, :profile_image, :fill, 300, 300, format: 'jpeg' , class: "img-circle" %>
-  <%= profile.attachment_field :profile_image, class: "img-circle" %>
+  <div class="row">
+    <div class="col-xs-6">
+    <%= profile.label :profile_image, "プロフィール画像" %><br>
+    <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, format: 'jpeg' , class: "img-circle" %>
+    <%= profile.attachment_field :profile_image, class: "img-circle" %><br>
+    <%= profile.label :introduction, "自己紹介" %><br>
+    <%= profile.text_area :introduction, size: "65x8" %>
+  </div>
 
-  <%= profile.label :nickname, "ニックネーム" %>
-  <%= profile.text_field :nickname %>
+  <div class="col-xs-6">
+    <div class="edit_table">
+      <table class="table">
+          <tr>
+            <th><%= profile.label :nickname, "ニックネーム" %></th>
+            <td><%= profile.text_field :nickname %></td>
+          </tr>
 
-  <%= profile.label :gender, "性別" %>
-  <%= profile.radio_button :gender, "男性" %> 男性
-  <%= profile.radio_button :gender, "女性" %> 女性
+          <tr>
+            <th><%= profile.label :gender, "性別" %></th>
+            <td><%= profile.radio_button :gender, "男性" %> 男性
+                <%= profile.radio_button :gender, "女性" %> 女性</td>
+          </tr>
 
+          <tr>
+            <th><%= profile.label :age, "年齢" %></th>
+            <td><%= profile.number_field :age, min: 20 %></td>
+          </tr>
 
-  <%= profile.label :age, "年齢" %>
-  <%= profile.number_field :age, min: 20 %>
-
-  <%= profile.label :email, "メールアドレス" %>
-  <%= profile.email_field :email %>
-
-  <%= profile.label :introduction, "自己紹介" %>
-  <%= profile.text_area :introduction %>
-
-  <%= profile.submit "更新する", class: "btn btn-primary" %>
-  <%= link_to "退会する", user_leave_path(@user.id), class: "btn btn-danger" %>
+          <tr>
+            <th><%= profile.label :email, "メールアドレス" %></th>
+            <td><%= profile.email_field :email %></td>
+          </tr>
+      </table>
+     </div>
+        <%= profile.submit "更新する", class: "btn btn-primary btn-block" %><br><br>
+        <%= link_to "退会する", user_leave_path(@user.id), class: "btn btn-danger btn-block" %>
+    </div>
+  </div>
 <% end %>

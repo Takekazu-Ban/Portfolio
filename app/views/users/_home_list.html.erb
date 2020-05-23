@@ -1,13 +1,15 @@
 
 <table class="table table-striped table-bordered">
   <% circles.each do |circle| %>
-
-        <td><strong><%= circle.circle_name %></strong>
-        <%= circle.genre %><br>
-          <%= link_to users_circle_path(circle.id) do %>
-          <%= attachment_image_tag circle, :circle_img, :fill, 120, 90, format: 'jpeg' %>
-          <% end %>
-          </td>
+    <td>
+        <%= link_to users_circle_path(circle.id) do %>
+        <%= attachment_image_tag circle, :circle_img, :fill, 155, 120, format: 'jpeg' %><br>
+        <% end %>
+         <div class="genle">
+          <p><%= circle.genre %></p>
+        </div>
+        <strong><%= circle.circle_name %></strong><br>
+    </td>
   <% end %>
 </table>
 

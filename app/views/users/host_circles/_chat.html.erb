@@ -1,5 +1,5 @@
 <div class="circle_name">
- <h3> サークル名：&nbsp; <strong><%= @circle.circle_name %></strong> </h3>
+ <h4> サークル名：&nbsp; <strong><%= @circle.circle_name %></strong> </h4>
 </div>
 
 <div class="chat_field">
@@ -34,6 +34,12 @@
   <%= form_for [:users, @message] do |messe| %>
     <%= messe.text_field :message %>
     <%= messe.hidden_field :circle_id, :value => @circle.id %>
-    <%= messe.submit'送信' %>
+
+     <button class="submit" type="submit">
+      <span class="glyphicon glyphicon-send" aria-hidden="true">
+      <% messe.submit %>
+      </span>
+    </button>
+
   <% end %>
 </div>

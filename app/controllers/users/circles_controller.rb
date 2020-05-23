@@ -4,16 +4,16 @@ class Users::CirclesController < ApplicationController
   end
 
   def index
-    @circles = Circle.all.page(params[:page]).per(5).search(params[:search])
-    if params[:genres].present?
-      @circles = @circles.get_by_genre(params[:genres])
-    end
-    if params[:active_areas].present?
-      @circles = @circles.get_by_active_area(params[:active_areas])
-    end
-    if params[:age_groups].present?
-      @circles = @circles.get_by_age_group(params[:age_groups])
-    end
+      @circles = Circle.all.search(params[:search])
+        if params[:genres].present?
+          @circles = @circles.get_by_genre(params[:genres])
+        end
+        if params[:active_areas].present?
+          @circles = @circles.get_by_active_area(params[:active_areas])
+        end
+        if params[:age_groups].present?
+          @circles = @circles.get_by_age_group(params[:age_groups])
+        end
   end
 
   def show
@@ -21,16 +21,16 @@ class Users::CirclesController < ApplicationController
   end
 
   def host_room
-    @circles = current_user.circles.page(params[:page]).per(5)
-    @circles_joined = current_user.joined_circles.page(params[:page]).per(5)
+    @circles = current_user.circles.page(params[:page]).per(4)
+    @circles_joined = current_user.joined_circles.page(params[:page]).per(4)
     @circle = Circle.find(params[:circle_id])
     @message = HostCircle.new
     @messages = @circle.host_circles
   end
 
   def join_room
-    @circles = current_user.circles.page(params[:page]).per(5)
-    @circles_joined = current_user.joined_circles.page(params[:page]).per(5)
+    @circles = current_user.circles.page(params[:page]).per(4)
+    @circles_joined = current_user.joined_circles.page(params[:page]).per(4)
     @circle = Circle.find(params[:circle_id])
     @message = HostCircle.new
     @messages = @circle.host_circles

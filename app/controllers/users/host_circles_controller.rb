@@ -1,12 +1,12 @@
 class Users::HostCirclesController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @circles = @user.circles.page(params[:page]).per(5)
-    @circles_joined = current_user.joined_circles.page(params[:page]).per(5)
+    @circles = @user.circles.page(params[:page]).per(4)
+    @circles_joined = current_user.joined_circles.page(params[:page]).per(4)
   end
 
   def joining_show
-    @circles_joined = current_user.joined_circles.page(params[:page]).per(5)
+    @circles_joined = current_user.joined_circles.page(params[:page]).per(4)
   end
 
   def create
@@ -14,8 +14,7 @@ class Users::HostCirclesController < ApplicationController
     message = HostCircle.new(host_circle_params)
     message.user_id = current_user.id
     message.save
-    #redirect_to users_host_circle_path(current_user.id)
-    redirect_to users_circle_host_room_path(current_user.circles.ids)
+    redirect_back(fallback_location: root_path)
   end
 
   private

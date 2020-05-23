@@ -27,6 +27,23 @@
 }
 
 
+//------ ログイン後画面 ------//
+.genle{
+  width: 70px;
+  height: 20px;
+  border-radius: 6px;
+  margin: 5px 0;
+  padding: 2px 7px;
+  font-size: 85%;
+  color: #FFF;
+  background: #4169E1;
+}
+
+.index_go {
+  margin-top: 200%;
+  margin-left: 40%;
+}
+
 //*------ テーブル ------*//
 
 .table {
@@ -42,106 +59,78 @@ tr{
 }
 
 //*------ 会員詳細画面 ------*//
+/*------ 画面左 ------*/
 .profile {
   margin: 30px 0 0 0;
-  float: right;
+  width: 100%;
+  border: solid black;
+}
+
+.edit_bottam{
+  margin-top: 20px;
+  margin-left: 30px;
+  float: left;
+}
+
+.profile_img {
+  padding: 20px;
+  float: left;
+}
+
+.user_table{
+  margin: 20px 0 0 20px;
+
   width: 50%;
+  float: left;
+}
+
+.introduction_box {
+  width: 100%;
+  height: 230px;
+  padding: 5px 5px;
+  margin-top: 230px;
+  background: #99CCFF;
 }
 
 .introduction {
-  margin: 10px 30px;
-  height: 200px;
-  width: 450px;
-  background: #FFFFCC;
-}
-
-.h2{
-  float: left;
-}
-
-
-//*------チャットフォーマット------*//
-.chat_field {
-  padding: 20px 10px;
-  height: 500px;
-  margin: 15px auto 0;
-  text-align: right;
-  background: #7da4cd;
-  overflow: scroll;
-}
-
-.wrapper{
-    display: flex;
-   flex-direction: row;
-
-}
-
-.balloon {
   width: 100%;
-  margin: 10px 0;
-}
-
-/*------ 自分のメッセージ ------*/
-.my_comment {
-  float: right;
-  margin: 10px 0 10px auto;
-}
-
-.my_comment p {
-  display: inline-block;
-  position: relative;
-  margin: 0 10px 0 0;
-  padding: 8px;
-  max-width: 250px;
-  border-radius: 12px;
-  background: #30e852;
-}
-
-.my_comment p:after {
-  content: "";
-  position: absolute;
-  top: 3px;
-  right: -19px;
-  border: 8px solid transparent;
-  border-left: 18px solid #30e852;
-  -webkit-transform: rotate(-35deg);
-  transform: rotate(-35deg);
-}
-
-/*------ 相手のメッセージ ------*/
-.you_icon {
-  float: left;
-  margin-right: 10px;
-}
-
-.you_comment {
-  margin: 10px 0;
-}
-
-.you_comment p {
-  display: inline-block;
-  position: relative;
-  margin: 0 10px 0 0;
-  padding: 8px;
-  max-width: 250px;
-  border-radius: 12px;
+  height: 195px;
+  padding: 5px;
   background: #FFF;
 }
 
-.you_comment p:after {
-  content: "";
-  position: absolute;
-  top: 3px;
-  left: -19px;
-  border: 8px solid transparent;
-  border-right: 18px solid #FFF;
-  -webkit-transform: rotate(35deg);
-  transform: rotate(35deg);
+/*------ 画面左 ------*/
+.title_box {
+  width: 102%;
+  height: 254px;
+  background: #99CCFF;
 }
 
-.host_chat{
-  height: 50px;
-  margin: 0 auto 15px;
+.list_box {
+  width: 100%;
+  height: 230px;
+  margin: -234px 1% 0 1%;
+  background: #99CCFF;
+  overflow: scroll;
+}
+
+//------ 会員編集画面 ------//
+/*------ 画面右 ------*/
+.user_show_right {
+  margin-top: 30px;
+}
+.edit_table {
+  width: 80%;
+  margin: 50px 0 100px 0;
+}
+
+
+//------ 退会画面 ------//
+.leave_text {
+  margin-top: 20px;
+  margin-left: 30%;
+}
+
+.leave-link{
   text-align: center;
-  background: #003399;
 }

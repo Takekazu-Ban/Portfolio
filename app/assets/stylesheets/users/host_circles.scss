@@ -3,6 +3,115 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+//*------チャットフォーマット------*//
+.chat_field {
+  padding: 20px 10px;
+  height: 400px;
+  margin: 0 auto 0;
+  text-align: right;
+  background: #7da4cd;
+  overflow: scroll;
+}
+
+.wrapper{
+   display: flex;
+   flex-direction: row;
+
+}
+
+.balloon {
+  width: 100%;
+  margin: 10px 0;
+}
+
+/*------ 自分のメッセージ ------*/
+.my_comment {
+  float: right;
+  margin: 10px 0 10px auto;
+}
+
+.my_comment p {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #30e852;
+}
+
+.my_comment p:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #30e852;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}
+
+/*------ 相手のメッセージ ------*/
+.you_icon {
+  float: left;
+  margin-right: 10px;
+}
+
+.you_comment {
+  margin: 10px 0;
+}
+
+.you_comment p {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #FFF;
+}
+
+.you_comment p:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #FFF;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+
+/*------ サークル名 ------*/
+.circle_name{
+  margin-top: 30px;
+  height: 50px;
+  padding: 5px;
+  text-align: center;
+  color: #FFF;
+  background: #003399;
+}
+
+/*------ メッセージ送信ボックス ------*/
+.host_chat{
+  height: 50px;
+  padding: 10px 0;
+  text-align: center;
+  background: #003399;
+}
+
+.host_chat input[type="text"] {
+  width: 80%;
+  margin-left: 30px;
+  height: 30px;
+  border-radius: 10px;
+  }
+
+.submit{
+  width: 50px;
+  height: 30px;
+  border-radius: 30px;
+}
 
 
 

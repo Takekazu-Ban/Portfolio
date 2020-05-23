@@ -1,6 +1,6 @@
 class Admins::CirclesController < ApplicationController
   def index
-    @circles = Circle.all.page(params[:page]).per(5)
+    @circles = Circle.all.page(params[:page]).per(4)
     @users = User.all
   end
 

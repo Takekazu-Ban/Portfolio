@@ -1,32 +1,47 @@
-<h3>主催サークル</h3>
-<table class="table">
-  <% @circles.each do |circle| %>
-       <tr>
-        <th>
-          <strong><%= circle.circle_name %></strong>
-        </th>
-      </tr>
-      <tr>
-        <td>
-          <% if (controller.controller_name == 'host_circles' && controller.action_name == 'show') || (controller.controller_name == 'circles' && controller.action_name == 'host_room') %>
-            <%= link_to users_circle_host_room_path(circle.id) do %>
-              <%= attachment_image_tag circle, :circle_img, :fill, 80, 60, format: 'jpeg' %>
-            <% end %>
+<% if (controller.controller_name != 'users' && controller.action_name  != 'show') || (controller.controller_name == 'host_circles') %>
+  <h4>主催サークル</h4>
+<% end %>
 
-          <% else %>
-            <%= link_to users_circle_path(circle.id) do %>
-              <%= attachment_image_tag circle, :circle_img, :fill, 80, 60, format: 'jpeg' %>
-            <% end %>
+<div class="organizer_list">
+  <div class="panel panel-primary">
+    <% @circles.each do |circle| %>
+
+
+    <div class="panel-heading">
+      <h4 class="panel-title"><strong><%= circle.circle_name %></strong></h4>
+    </div>
+
+    <div class="panel-body">
+      <div class="circle_list_img">
+        <% if (controller.controller_name == 'host_circles' && controller.action_name == 'show') || (controller.controller_name == 'circles' && controller.action_name == 'host_room') %>
+          <%= link_to users_circle_host_room_path(circle.id) do %>
+            <%= attachment_image_tag circle, :circle_img, :fill, 80, 60, format: 'jpeg' %>
           <% end %>
-        </td>
-       <td>ジャンル：<%= circle.genre %><br>
-        メンバー数：<%= circle.circle_joins.count %>人 &ensp; 地域：<%= circle.active_area %></td>
-        <td>
-        <% if current_user == circle.user %>
-          <td><%= link_to "編集", edit_users_circle_path(circle.id) %></td>
-          <td><%= link_to "解散", users_circle_path(circle.id), method: :delete %></td>
+        <% else %>
+          <%= link_to users_circle_path(circle.id) do %>
+          <%= attachment_image_tag circle, :circle_img, :fill, 80, 60, format: 'jpeg' %>
+          <% end %>
         <% end %>
-      </tr>
+      </div>
+
+      <div class="circle_report">
+        ジャンル：<%= circle.genre %><br>
+        メンバー数：<%= circle.circle_joins.count %>人 &ensp;
+        活動地域：<%= circle.active_area %>
+      </div>
+
+      <div class="host_authorize">
+        <% if current_user == circle.user %>
+        <%= link_to "編集", edit_users_circle_path(circle.id) %>
+        <%= link_to "解散", users_circle_path(circle.id), method: :delete %>
+        <% end %>
+      </div>
+
+    </div>
+    <% end %>
+
+  </div>
+  <% if (controller.controller_name != 'users' && controller.action_name  != 'show') || (controller.controller_name == 'host_circles') %>
+  <%= paginate @circles %>
   <% end %>
-</table>
-<%= paginate @circles %>
+</div>
