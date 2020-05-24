@@ -13,7 +13,11 @@
 
     <div class="panel-body">
       <div class="circle_list_img">
-        <% if (controller.controller_name == 'host_circles' && controller.action_name == 'show') || (controller.controller_name == 'circles' && controller.action_name == 'host_room') %>
+        <% if admin_signed_in? %>
+          <%= link_to admins_circle_path(circle.id) do %>
+          <%= attachment_image_tag circle, :circle_img, :fill, 80, 60, format: 'jpeg' %>
+        <% end %>
+        <% elsif (controller.controller_name == 'host_circles' && controller.action_name == 'show') || (controller.controller_name == 'circles' && controller.action_name == 'host_room') %>
           <%= link_to users_circle_host_room_path(circle.id) do %>
             <%= attachment_image_tag circle, :circle_img, :fill, 80, 60, format: 'jpeg' %>
           <% end %>
@@ -39,7 +43,6 @@
 
     </div>
     <% end %>
-
   </div>
   <% if (controller.controller_name != 'users' && controller.action_name  != 'show') || (controller.controller_name == 'host_circles') %>
   <%= paginate @circles %>

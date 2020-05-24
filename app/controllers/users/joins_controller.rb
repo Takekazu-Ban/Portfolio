@@ -1,4 +1,5 @@
 class Users::JoinsController < ApplicationController
+  before_action :authenticate_user!
   def create
     join = current_user.circle_joins.build({circle_id: params[:circle_id]})
     join.user_id = current_user.id

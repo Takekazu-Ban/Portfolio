@@ -2,8 +2,16 @@ class Circle < ApplicationRecord
   belongs_to :user
   has_many  :host_circles
   has_many :circle_joins, class_name: "Join", dependent: :destroy
-  belongs_to :host_circle
   attachment :circle_img
+
+  # 入力設定
+  validates :circle_name, length: 1..20
+  validates :active_area, presence: true
+  #validates :area_show, length: 0..20
+  #validates :circle_img_id, presence: true
+  validates :age_group, presence: true
+
+
 
   #キーワード検索
   def self.search(search)

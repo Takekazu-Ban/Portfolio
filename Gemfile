@@ -73,3 +73,9 @@ gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-doc'
+end

@@ -10,6 +10,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # 入力設定
+  validates :nickname, length: 1..20
+  validates :email, presence: true
+  validates :profile_image, presence: true
+  validates :age, presence: true
+  validates :gender, presence: true
+  #validates :introduction, length: 0..200
+
+
   enum is_deleted: { 有効: false, 退会済み: true }
   enum gender: { 男性: 0, 女性:1 }
 

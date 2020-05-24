@@ -1,4 +1,5 @@
 class Admins::CirclesController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @circles = Circle.all.page(params[:page]).per(4)
     @users = User.all

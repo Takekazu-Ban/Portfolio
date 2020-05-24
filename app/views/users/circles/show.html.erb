@@ -30,28 +30,32 @@
     <div class="circle_item">
     <table class="table">
     <tr>
-      <th><%= circle.label :active_area, "メンバー" %>:</th>
+      <th><%= circle.label :active_area, "メンバー" %>：</th>
       <td><%= @circle.circle_joins.count %>人</td>
     </tr>
     <tr>
-      <th><%= circle.label :active_area, "活動地域" %></th>
+      <th><%= circle.label :active_area, "活動地域" %>：</th>
       <td><%= @circle.active_area %></td>
     </tr>
     <tr>
-      <th><%= circle.label :area_show, "活動地域詳細" %></th>
+      <th><%= circle.label :area_show, "活動地域詳細" %>：</th>
       <td><%= @circle.area_show %></td>
     </tr>
     <tr>
-      <th><%= circle.label :age_group, "募集年齢層" %></th>
-      <td><%= @circle.age_group %></td>
+      <th><%= circle.label :age_group, "募集年齢層" %>：</th>
+      <td><%= @circle.age_group %>人</td>
     </tr>
     <tr>
-      <th><%= circle.label :recruitment, "募集人数" %></th>
+      <th><%= circle.label :recruitment, "募集人数" %>：</th>
       <td><%= @circle.recruitment %></td>
     </tr>
     <tr>
-      <th><%= circle.label :cost, "費用" %> ¥</th>
-      <td><%= @circle.cost %></td>
+      <th><%= circle.label :cost, "費用" %>：</th>
+      <% if @circle.cost == nil %>
+        <td>無料</td>
+      <% else %>
+        <td>¥<%= @circle.cost %></td>
+      <% end %>
     </tr>
     </table>
     </div>
@@ -65,10 +69,10 @@
 
   <div class="user_bottam">
     <% if current_user == @circle.user %>
-      <%= link_to "編集する", edit_users_circle_path(current_user.id), class: "btn btn-info" %>
+      <%= link_to "編集する", edit_users_circle_path(@circle.id), class: "btn btn-info" %>
     <% else %>
       <% if @circle.joined_by?(current_user) %>
-        <%= link_to "サークルを辞める", users_circle_joins_path(@circle.id), method: :delete, class: "btn btn-warning" %>
+        <%= link_to "サークルを辞める", users_circle_join_path(@circle.id), method: :delete, class: "btn btn-warning" %>
       <% elsif !@circle.joined_by?(current_user) %>
         <%= link_to "サークルに参加する", users_circle_joins_path(@circle.id), method: :POST, class: "btn btn-info" %>
     <% end %>

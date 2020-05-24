@@ -3,14 +3,19 @@ class UsersController < ApplicationController
 
   def home
     @circle = Circle.all
-    @circles = Circle.all.order(created_at: :desc).limit(5)#.page(params[:page]).per(2)
+    @circles = Circle.all.order(created_at: :desc).limit(5)
     @circles1 = Circle.find(Join.group(:circle_id).order('count(circle_id) desc').limit(5).pluck(:circle_id))
   end
 
   def show
     @user = User.find(params[:id])
-    @circles = @user.circles.page(params[:page]).per(5)
-    @circles_joined = current_user.joined_circles.page(params[:page]).per(5)
+    if (controller_name != 'users' && action_name  != 'show') || (controller_name == 'host_circles')
+      @circles = @user.circles.page(params[:page]).per(5)
+      @circles_joined = current_user.joined_circles.page(params[:page]).per(5)
+    else
+      @circles = @user.circles
+      @circles_joined = current_user.joined_circles
+    end
   end
 
   def edit
