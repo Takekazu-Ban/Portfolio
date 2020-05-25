@@ -1,14 +1,19 @@
 <h2>サークル編集</h2>
+
+<div class = "flash">
+  <%= flash[:alert] %>
+</div>
+
 <%= form_for [:users, @circle] do |circle| %>
     <div class="row">
     <div class="col-xs-6">
       <table class="new_circle_item">
         <tr>
-          <th><%= circle.label :genre, "ジャンル" %></th>
+          <th><%= circle.label :genre, "ジャンル" %> (必項)</th>
           <td><%= circle.select :genre, Circle.genres.keys, {prompt: '選択して下さい'} %></td>
         </tr>
         <tr>
-          <th><%= circle.label :circle_name, "サークル名" %></th>
+          <th><%= circle.label :circle_name, "サークル名" %> (必項)</th>
           <td><%= circle.text_field :circle_name %></td>
         </tr>
 
@@ -39,7 +44,7 @@
       <table>
         <tr>
           <td>
-            <%= circle.label :circle_img, "サークルイメージ画像" %>
+            <%= circle.label :circle_img, "サークルイメージ画像" %>(必項)
             <div class="circle_img">
               <%= attachment_image_tag @circle, :circle_img, format: 'jpeg',fallback: "no_image.jpeg",size:"300x180" %>
             </div>

@@ -26,7 +26,10 @@
 
           <div class="edit_bottam">
           <% if current_user == @user %>
-            <%= link_to "会員編集", edit_user_path(@user.id), class: 'btn btn-primary' %><br>
+            <%= link_to edit_user_path(@user.id), class: 'btn btn-primary' do %>
+                <span class="glyphicon glyphicon-cog" aria-hidden="true">プロフィール編集</span>
+            <% end %>
+            <br>
           <% end %>
         </div>
 

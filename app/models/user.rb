@@ -16,7 +16,7 @@ class User < ApplicationRecord
   validates :profile_image, presence: true
   validates :age, presence: true
   validates :gender, presence: true
-  #validates :introduction, length: 0..200
+
 
 
   enum is_deleted: { 有効: false, 退会済み: true }

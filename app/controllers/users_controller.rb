@@ -24,15 +24,19 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    user.update(user_params)
-    redirect_to user_path(current_user.id)
+    if user.update(user_params)
+      redirect_to user_path(current_user.id)
+    else
+      flash[:alert] = "※全ての(必項)を埋めて下さい！"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def leave
   end
 
   def delete
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
     @user.update(is_deleted: true)
     sign_out current_user
     redirect_to root_path

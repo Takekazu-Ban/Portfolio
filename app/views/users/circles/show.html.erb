@@ -20,7 +20,7 @@
       <% end %>
 
         <div class="host_name">
-          <%= circle.label :nickname, "ホスト名" %><br>
+          <span class="glyphicon glyphicon-user" aria-hidden="true"><strong>ホスト名</strong></span><br>
           <%= @circle.user.nickname %>
         </div>
       </div>
@@ -28,36 +28,40 @@
 
   <div class="col-xs-6">
     <div class="circle_item">
-    <table class="table">
-    <tr>
-      <th><%= circle.label :active_area, "メンバー" %>：</th>
-      <td><%= @circle.circle_joins.count %>人</td>
-    </tr>
-    <tr>
-      <th><%= circle.label :active_area, "活動地域" %>：</th>
-      <td><%= @circle.active_area %></td>
-    </tr>
-    <tr>
-      <th><%= circle.label :area_show, "活動地域詳細" %>：</th>
-      <td><%= @circle.area_show %></td>
-    </tr>
-    <tr>
-      <th><%= circle.label :age_group, "募集年齢層" %>：</th>
-      <td><%= @circle.age_group %>人</td>
-    </tr>
-    <tr>
-      <th><%= circle.label :recruitment, "募集人数" %>：</th>
-      <td><%= @circle.recruitment %></td>
-    </tr>
-    <tr>
-      <th><%= circle.label :cost, "費用" %>：</th>
-      <% if @circle.cost == nil %>
-        <td>無料</td>
-      <% else %>
-        <td>¥<%= @circle.cost %></td>
-      <% end %>
-    </tr>
-    </table>
+      <table class="table">
+        <tr>
+          <th><%= circle.label :active_area, "メンバー" %>：</th>
+          <td><%= @circle.circle_joins.count %>人</td>
+        </tr>
+        <tr>
+          <th><%= circle.label :active_area, "活動地域" %>：</th>
+          <td><%= @circle.active_area %></td>
+        </tr>
+        <tr>
+          <th><%= circle.label :area_show, "活動地域詳細" %>：</th>
+          <% if @circle.area_show.blank? %>
+            <td>なし</td>
+          <% else %>
+            <td><%= @circle.area_show %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <th><%= circle.label :age_group, "募集年齢層" %>：</th>
+          <td><%= @circle.age_group %></td>
+        </tr>
+        <tr>
+          <th><%= circle.label :recruitment, "募集人数" %>：</th>
+          <td><%= @circle.recruitment %>人</td>
+        </tr>
+        <tr>
+          <th><%= circle.label :cost, "費用" %>：</th>
+          <% if @circle.cost == nil %>
+            <td>無料</td>
+          <% else %>
+            <td>¥<%= @circle.cost %></td>
+          <% end %>
+        </tr>
+      </table>
     </div>
 
     <div class="explanation_box">

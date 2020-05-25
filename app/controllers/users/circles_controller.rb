@@ -43,17 +43,24 @@ class Users::CirclesController < ApplicationController
   end
 
   def create
-    #circle = current_user.circles.create(circle_params)
     circle = Circle.new(circle_params)
     circle.user_id = current_user.id
-    circle.save!
-    redirect_to user_home_path(current_user.id)
+    if circle.save
+      redirect_to user_home_path(current_user.id)
+    else
+      flash[:alert] = "※全ての(必項)を埋めて下さい！"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def update
     circle = Circle.find(params[:id])
-    circle.update(circle_params)
-    redirect_to user_home_path(current_user.id)
+    if circle.update(circle_params)
+      redirect_to user_home_path(current_user.id)
+    else
+      flash[:alert] = "※全ての(必項)を埋めて下さい！"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def destroy

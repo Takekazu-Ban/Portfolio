@@ -26,8 +26,14 @@
 
        <div class="circle_report">
         ジャンル：<%= circle.genre %><br>
-        メンバー数：<%= circle.circle_joins.count %>人 &ensp;
-        活動地域：<%= circle.active_area %>
+        メンバー数：<%= circle.circle_joins.count %>人<br>
+        活動地域：<%= circle.active_area %>&emsp;&emsp;
+        活動地域詳細：
+        <% if circle.area_show.blank? %>
+          <td>なし</td>
+        <% else %>
+          <td><%= circle.area_show %></td>
+        <% end %>
       </div>
 
       <div class="host_icon">

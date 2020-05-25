@@ -5,12 +5,12 @@ class Circle < ApplicationRecord
   attachment :circle_img
 
   # 入力設定
+  validates :genre, presence: true
   validates :circle_name, length: 1..20
   validates :active_area, presence: true
-  #validates :area_show, length: 0..20
-  #validates :circle_img_id, presence: true
+  validates :circle_img, presence: true
   validates :age_group, presence: true
-
+  validates :explanation, presence: true
 
 
   #キーワード検索

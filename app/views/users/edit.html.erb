@@ -1,8 +1,13 @@
 <h2>会員情報編集</h2>
+
+<div class = "flash">
+  <%= flash[:alert] %>
+</div>
+
 <%= form_for(@user) do |profile| %>
   <div class="row">
     <div class="col-xs-6">
-    <%= profile.label :profile_image, "プロフィール画像" %><br>
+    <%= profile.label :profile_image, "プロフィール画像" %> (必項)<br>
     <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, format: 'jpeg' , class: "img-circle" %>
     <%= profile.attachment_field :profile_image, class: "img-circle" %><br>
     <%= profile.label :introduction, "自己紹介" %><br>
@@ -13,23 +18,23 @@
     <div class="edit_table">
       <table class="table">
           <tr>
-            <th><%= profile.label :nickname, "ニックネーム" %></th>
+            <th><%= profile.label :nickname, "ニックネーム" %> (必項)</th>
             <td><%= profile.text_field :nickname %></td>
           </tr>
 
           <tr>
-            <th><%= profile.label :gender, "性別" %></th>
+            <th><%= profile.label :gender, "性別" %> (必項)</th>
             <td><%= profile.radio_button :gender, "男性" %> 男性
                 <%= profile.radio_button :gender, "女性" %> 女性</td>
           </tr>
 
           <tr>
-            <th><%= profile.label :age, "年齢" %></th>
+            <th><%= profile.label :age, "年齢" %> (必項)</th>
             <td><%= profile.number_field :age, min: 20 %></td>
           </tr>
 
           <tr>
-            <th><%= profile.label :email, "メールアドレス" %></th>
+            <th><%= profile.label :email, "メールアドレス" %> (必項)</th>
             <td><%= profile.email_field :email %></td>
           </tr>
       </table>
