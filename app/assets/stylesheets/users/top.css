@@ -1,7 +1,12 @@
-h2,h3 {
-  text-align:center;
+.title {
+  text-align: center;
 }
 
 .explanation {
-  margin-left: 20%;
+  text-align: left;
+ }
+
+.user_go {
+  float: right;
+  margin: -80px 20px 0 0;
 }

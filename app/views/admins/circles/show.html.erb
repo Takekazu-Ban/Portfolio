@@ -1,8 +1,10 @@
 <div class="row">
   <%= form_for [:users, @circle] do |circle| %>
     <div class="col-xs-6">
-      <div class="circle_profile">
+      <div class="profile_name">
         <h2><%= @circle.circle_name %></h2>
+      </div>
+      <div class="circle_profile">
         <div class="genre_name">
           <%= circle.label :genre, "ジャンル：" %>
           <%= @circle.genre %>
@@ -38,20 +40,28 @@
         <td><%= @circle.active_area %></td>
       </tr>
       <tr>
-        <th><%= circle.label :area_show, "活動地域詳細" %></th>
-        <td><%= @circle.area_show %></td>
+        <th><%= circle.label :area_show, "活動地域詳細" %>：</th>
+        <% if @circle.area_show.blank? %>
+          <td>なし</td>
+        <% else %>
+          <td><%= @circle.area_show %></td>
+        <% end %>
       </tr>
       <tr>
         <th><%= circle.label :age_group, "募集年齢層" %></th>
         <td><%= @circle.age_group %></td>
       </tr>
-      <tr>
-        <th><%= circle.label :recruitment, "募集人数" %></th>
-        <td><%= @circle.recruitment %></td>
-      </tr>
-      <tr>
-        <th><%= circle.label :cost, "費用" %> ¥</th>
-        <td><%= @circle.cost %></td>
+     <tr>
+          <th><%= circle.label :recruitment, "募集人数" %>：</th>
+          <td><%= @circle.recruitment %>人</td>
+        </tr>
+        <tr>
+          <th><%= circle.label :cost, "費用" %>：</th>
+          <% if @circle.cost == nil %>
+            <td>無料</td>
+          <% else %>
+            <td>¥<%= @circle.cost %></td>
+          <% end %>
       </tr>
       </table>
     </div>
@@ -63,7 +73,7 @@
       </div>
     </div>
 
-<div class="user_bottam">
+<div class="admin_button">
   <%= link_to "サークルを解散させる", " /admins/circles/#{@circle.id}", method: :delete, class: 'btn btn-warning' %><br>
 </div>
   </div>

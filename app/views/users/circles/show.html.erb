@@ -1,8 +1,10 @@
 <div class="row">
   <%= form_for [:users, @circle] do |circle| %>
     <div class="col-xs-6">
-      <div class="circle_profile">
+      <div class="profile_name">
         <h2><%= @circle.circle_name %></h2>
+      </div>
+      <div class="circle_profile">
         <div class="genre_name">
           <%= circle.label :genre, "ジャンル：" %>
           <%= @circle.genre %>
@@ -71,14 +73,14 @@
       </div>
     </div>
 
-  <div class="user_bottam">
+  <div class="user_button">
     <% if current_user == @circle.user %>
       <%= link_to "編集する", edit_users_circle_path(@circle.id), class: "btn btn-info" %>
     <% else %>
       <% if @circle.joined_by?(current_user) %>
         <%= link_to "サークルを辞める", users_circle_join_path(@circle.id), method: :delete, class: "btn btn-warning" %>
       <% elsif !@circle.joined_by?(current_user) %>
-        <%= link_to "サークルに参加する", users_circle_joins_path(@circle.id), method: :POST, class: "btn btn-info" %>
+        <%= link_to "サークルに参加する", users_circle_joins_path(@circle.id), method: :POST, class: "btn btn-success" %>
     <% end %>
   <% end %>
     <%= link_to "サークル一覧へ", users_circle_index_path(@circle.id), method: :get, class: "btn btn-info" %>

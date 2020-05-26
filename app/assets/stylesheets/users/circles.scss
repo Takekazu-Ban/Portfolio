@@ -46,13 +46,31 @@
   margin-top: 15px;
   }
 
+.create_button {
+  text-align: right;
+}
+
 //------ サークル詳細画面 ------//
 /*------ 画面左 ------*/
 .circle_profile {
-  margin: 30px 0 0 0;
+  padding-top: 5px;
   width: 100%;
-  height: 520px;
-  border: solid black;
+  height: 460px;
+  border-bottom: solid black 2px;
+  border-right: solid black 2px;
+  border-left: solid black 2px;
+}
+
+.profile_name {
+  width: 100%;
+  height: 65px;
+  margin-top: 20px;
+  padding: 0 0 0 10px;
+  background: #87CEFA;
+  color: #FFF;
+  border-top: solid black 2px;
+  border-right: solid black 2px;
+  border-left: solid black 2px;
 }
 
 .genre_name {
@@ -92,8 +110,9 @@
   background: #FFF;
 }
 
-.user_bottam {
+.user_button {
   margin-top: 10px;
+  text-align: right;
 }
 
 //------ 主催・参加サークルリスト ------//

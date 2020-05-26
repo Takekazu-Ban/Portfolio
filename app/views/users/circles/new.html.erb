@@ -55,7 +55,11 @@
             <td><%= circle.text_area :explanation, size: "65x8" %></td>
           </tr>
           <tr>
-            <td><%= circle.submit('サークル作成', class: "btn btn-primary") %></td>
+            <td>
+              <div class="create_button">
+                <%= circle.submit('サークル作成', class: "btn btn-primary") %>
+              </div>
+            </td>
           </tr>
       </table>
     </div>

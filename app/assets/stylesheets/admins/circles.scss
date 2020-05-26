@@ -2,3 +2,67 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//------ サークル詳細画面 ------//
+/*------ 画面左 ------*/
+.circle_profile {
+  padding-top: 5px;
+  width: 100%;
+  height: 460px;
+  border-bottom: solid black 2px;
+  border-right: solid black 2px;
+  border-left: solid black 2px;
+}
+
+.profile_name {
+  width: 100%;
+  height: 65px;
+  margin-top: 20px;
+  padding: 0 0 0 10px;
+  background: #87CEFA;
+  color: #FFF;
+  border-top: solid black 2px;
+  border-right: solid black 2px;
+  border-left: solid black 2px;
+}
+
+.genre_name {
+  padding-left: 30px;
+}
+
+.circle_show_img {
+  padding: 0 30px 10px 12%;
+}
+
+.circle_host_img {
+  margin: 10px 0 0 30px;
+  float: left;
+}
+
+.host_name {
+  margin: 30px 0 0 20px;
+  float: left;
+}
+
+/*------ 画面右 ------*/
+.circle_item {
+  margin: 80px 0 -20px 0;
+}
+
+.explanation_box {
+  width: 100%;
+  height: 170px;
+  padding: 5px 5px;
+  background: #87CEFA;
+}
+
+.cicle_explanation {
+  width: 100%;
+  height: 135px;
+  padding: 5px;
+  background: #FFF;
+}
+
+.admin_button {
+  margin-top: 10px;
+  text-align: right;
+}

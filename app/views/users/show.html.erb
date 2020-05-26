@@ -29,7 +29,11 @@
             <%= link_to edit_user_path(@user.id), class: 'btn btn-primary' do %>
                 <span class="glyphicon glyphicon-cog" aria-hidden="true">プロフィール編集</span>
             <% end %>
-            <br>
+          <%# elsif request.referer&.include?("/host_room")  %>
+            <%#= link_to users_circle_join_path(@circles_joined.ids), method: :delete, class: "btn btn-warning" do %>
+              <!--span class="glyphicon glyphicon-remove" aria-hidden="true">サークルから外す</span>
+            <%# end %>
+            <br-->
           <% end %>
         </div>
 

@@ -11,6 +11,6 @@
 
     <div class="leave-link">
       <%= link_to "退会しない", user_home_path, class: "btn btn-primary" %>
-      <%= link_to "退会する", user_delete_path(current_user), method: :patch, class: "btn btn-danger" %>
+      <%= link_to "退会する", user_delete_path(current_user.id), method: :patch, class: "btn btn-danger" %>
     </div>
 
