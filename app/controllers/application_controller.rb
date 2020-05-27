@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  # ログイン時の画面設定
   def after_sign_in_path_for(resource)
     case resource
     when User
@@ -10,6 +11,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # ログアウト時の画面設定
   def after_sign_out_path_for(resource)
     if resource == :admin
       top_admin_path(resource)

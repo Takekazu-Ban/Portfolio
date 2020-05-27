@@ -17,7 +17,5 @@ class User < ApplicationRecord
   validates :age, presence: true
   validates :gender, presence: true
 
-  #enum is_deleted: { 有効: false, 退会済み: true }
   enum gender: { 男性: 0, 女性:1 }
-
 end

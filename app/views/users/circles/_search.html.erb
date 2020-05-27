@@ -1,45 +1,44 @@
 <!-- 検索フォーム -->
-  <div class="search_field">
-    <h4><span class="glyphicon glyphicon-search" aria-hidden="true"><strong>サークルを検索</strong></span></h4>
+<div class="search_field">
+  <h4><span class="glyphicon glyphicon-search" aria-hidden="true"><strong>サークルを検索</strong></span></h4>
 
-    <style type="text/css">
-      select {
-        width: 70%;
-        height: 25px;
-        margin-bottom: 5px;
-      }
-    </style>
+  <style type="text/css">
+    select {
+      width: 70%;
+      height: 25px;
+      margin-bottom: 5px;
+    }
+  </style>
 
-    <% if controller.controller_name == 'circles' && controller.action_name == 'index' %>
-      <%= form_tag(users_circle_index_path, :method => 'get') do %>
-        <%= text_field_tag :search %><br>
-        <br>
-        ジャンル絞り込み<br>
-        <%= select_tag :genres, options_for_select(Circle.genres),include_blank: true %>
-        <br>
-        地域絞り込み<br>
-        <%= select_tag :active_areas, options_for_select(Circle.active_areas),include_blank: true %>
-        <br>
-        募集年齢層絞り込み<br>
-        <%= select_tag :age_groups, options_for_select(Circle.age_groups),include_blank: true %>
-        <br>
-        <%= submit_tag '検索', :circle_name => nil %>
-      <% end %>
-
-    <% else %>
-      <%= form_tag(users_circle_index_path(1), :method => 'get') do %>
-        <%= text_field_tag :search %><br>
-        <br>
-        ジャンル絞り込み：
-        <%= select_tag :genres, options_for_select(Circle.genres),include_blank: true %>
-        <br>
-        地域絞り込み：
-        <%= select_tag :active_areas, options_for_select(Circle.active_areas),include_blank: true %>
-        <br>
-        募集年齢層絞り込み：
-        <%= select_tag :age_groups, options_for_select(Circle.age_groups),include_blank: true %>
-        <br>
-        <%= submit_tag '検索', :circle_name => nil %>
-      <% end %>
+  <% if controller.controller_name == 'circles' && controller.action_name == 'index' %>
+    <%= form_tag(users_circle_index_path, :method => 'get') do %>
+      <%= text_field_tag :search %><br>
+      <br>
+      ジャンル絞り込み<br>
+      <%= select_tag :genres, options_for_select(Circle.genres),include_blank: true %>
+      <br>
+      地域絞り込み<br>
+      <%= select_tag :active_areas, options_for_select(Circle.active_areas),include_blank: true %>
+      <br>
+      募集年齢層絞り込み<br>
+      <%= select_tag :age_groups, options_for_select(Circle.age_groups),include_blank: true %>
+      <br>
+      <%= submit_tag '検索', :circle_name => nil %>
     <% end %>
-  </div>
+  <% else %>
+    <%= form_tag(users_circle_index_path(1), :method => 'get') do %>
+      <%= text_field_tag :search %><br>
+      <br>
+      ジャンル絞り込み：
+      <%= select_tag :genres, options_for_select(Circle.genres),include_blank: true %>
+      <br>
+      地域絞り込み：
+      <%= select_tag :active_areas, options_for_select(Circle.active_areas),include_blank: true %>
+      <br>
+      募集年齢層絞り込み：
+      <%= select_tag :age_groups, options_for_select(Circle.age_groups),include_blank: true %>
+      <br>
+      <%= submit_tag '検索', :circle_name => nil %>
+    <% end %>
+  <% end %>
+</div>

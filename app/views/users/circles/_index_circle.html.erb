@@ -1,3 +1,4 @@
+<!--  -->
 <% if params[:search] %>
   <h4>検索結果 &emsp; （ <%= circles.count %>件）</h4>
 <% elsif current_page?('/admins/circles') %>
@@ -5,6 +6,7 @@
 <% else %>
   <h4>サークル 一覧 &emsp; （ <%= circles.count %>件）</h4>
 <% end %>
+
   <div class="index_list">
   <div class="panel panel-primary">
     <% circles.each do |circle| %>

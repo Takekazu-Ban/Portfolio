@@ -10,8 +10,6 @@ class Users::JoinsController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     join = Join.find_by(circle_id: params[:circle_id], user_id: @user.id)
-
-    #join = Join.find_by(circle_id: params[:circle_id], user_id: current_user.id)
     join.destroy
     redirect_to user_home_path(current_user.id)
   end

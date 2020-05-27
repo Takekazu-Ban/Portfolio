@@ -5,12 +5,13 @@
     <h5>人気サークル</h5>
     <%= render 'users/home_list',circles: @circles1 %>
   </div>
+
   <div class="col-xs-3">
     <%= render 'users/circles/search' %>
     <div class="index_go">
       <%= link_to users_circle_index_path(@circle.ids), method: :get do %>
         <h4>サークル一覧へ
-          <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
         </h4>
       <% end %>
     </div>

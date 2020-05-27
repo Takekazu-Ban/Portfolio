@@ -6,16 +6,16 @@ class Users::CirclesController < ApplicationController
   end
 
   def index
-      @circles = Circle.all.search(params[:search])
-        if params[:genres].present?
-          @circles = @circles.get_by_genre(params[:genres])
-        end
-        if params[:active_areas].present?
-          @circles = @circles.get_by_active_area(params[:active_areas])
-        end
-        if params[:age_groups].present?
-          @circles = @circles.get_by_age_group(params[:age_groups])
-        end
+    @circles = Circle.all.search(params[:search])
+      if params[:genres].present?
+        @circles = @circles.get_by_genre(params[:genres])
+      end
+      if params[:active_areas].present?
+        @circles = @circles.get_by_active_area(params[:active_areas])
+      end
+      if params[:age_groups].present?
+        @circles = @circles.get_by_age_group(params[:age_groups])
+      end
   end
 
   def show
@@ -70,7 +70,6 @@ class Users::CirclesController < ApplicationController
   end
 
   private
-
   def circle_params
     params.require(:circle).permit(:genre, :active_area, :age_group, :circle_name, :circle_img, :explanation, :area_show, :recruitment, :cost, :count, :join_user)
   end

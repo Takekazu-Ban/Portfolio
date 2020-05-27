@@ -1,11 +1,10 @@
 <h2>サークル編集</h2>
-
 <div class = "flash">
   <%= flash[:alert] %>
 </div>
 
 <%= form_for [:users, @circle] do |circle| %>
-    <div class="row">
+  <div class="row">
     <div class="col-xs-6">
       <table class="new_circle_item">
         <tr>
@@ -16,7 +15,6 @@
           <th><%= circle.label :circle_name, "サークル名" %> (必項)</th>
           <td><%= circle.text_field :circle_name %></td>
         </tr>
-
         <tr>
           <th><%= circle.label :active_area, "活動地域" %> (必項)</th>
           <td><%= circle.select :active_area, Circle.active_areas.keys, {prompt: '選択して下さい'} %></td>
@@ -49,18 +47,16 @@
               <%= attachment_image_tag @circle, :circle_img, format: 'jpeg',fallback: "no_image.jpeg",size:"300x180" %>
             </div>
           </td>
-          </tr>
-          <tr>
-            <td><%= circle.attachment_field :circle_img %></td>
-          </tr>
-          <tr>
-            <td><%= circle.label :explanation, "説明文" %> (必項)</td>
-          </tr>
-          <tr>
-            <td><%= circle.text_area :explanation, size: "65x8" %></td>
-          </tr>
-          <tr>
-          </tr>
+        </tr>
+        <tr>
+          <td><%= circle.attachment_field :circle_img %></td>
+        </tr>
+        <tr>
+          <td><%= circle.label :explanation, "説明文" %> (必項)</td>
+        </tr>
+        <tr>
+          <td><%= circle.text_area :explanation, size: "65x8" %></td>
+        </tr>
       </table>
       <div class="edit_circle_button">
          <%= circle.submit('更新', class: "btn btn-primary") %>
@@ -70,9 +66,9 @@
 <% end %>
 
 <style type="text/css">
-  select {
-    width: 200px;
-    height: 25px;
-    margin-bottom: 5px;
-  }
+select {
+  width: 200px;
+  height: 25px;
+  margin-bottom: 5px;
+}
 </style>

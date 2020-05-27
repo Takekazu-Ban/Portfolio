@@ -9,18 +9,14 @@
           <%= circle.label :genre, "ジャンル：" %>
           <%= @circle.genre %>
         </div>
-
         <div class="circle_show_img">
           <%= attachment_image_tag @circle, :circle_img, :fill, 418, 324, format: 'jpeg' %>
         </div>
-
         <div class="circle_host_img">
           <%= link_to admins_user_path(@circle.user.id) do %>
-        <%= attachment_image_tag @circle.user, :profile_image, :fill, 70, 70, format: 'jpeg',fallback: "no_image.jpeg",size:
-        "70x70" , class: "img-circle" %>
-      </div>
-      <% end %>
-
+            <%= attachment_image_tag @circle.user, :profile_image, :fill, 70, 70, format: 'jpeg',fallback: "no_image.jpeg",size:"70x70" , class: "img-circle" %>
+          <% end %>
+        </div>
         <div class="host_name">
           <%= circle.label :nickname, "ホスト名" %><br>
           <%= @circle.user.nickname %>
@@ -28,54 +24,55 @@
       </div>
     </div>
 
-  <div class="col-xs-6">
-    <div class="circle_item">
-      <table class="table">
-      <tr>
-        <th><%= circle.label :active_area, "メンバー" %>:</th>
-        <td><%= @circle.circle_joins.count %>人</td>
-      </tr>
-      <tr>
-        <th><%= circle.label :active_area, "活動地域" %></th>
-        <td><%= @circle.active_area %></td>
-      </tr>
-      <tr>
-        <th><%= circle.label :area_show, "活動地域詳細" %>：</th>
-        <% if @circle.area_show.blank? %>
-          <td>なし</td>
-        <% else %>
-          <td><%= @circle.area_show %></td>
-        <% end %>
-      </tr>
-      <tr>
-        <th><%= circle.label :age_group, "募集年齢層" %></th>
-        <td><%= @circle.age_group %></td>
-      </tr>
-     <tr>
-          <th><%= circle.label :recruitment, "募集人数" %>：</th>
-          <td><%= @circle.recruitment %>人</td>
-        </tr>
-        <tr>
-          <th><%= circle.label :cost, "費用" %>：</th>
-          <% if @circle.cost == nil %>
-            <td>無料</td>
-          <% else %>
-            <td>¥<%= @circle.cost %></td>
-          <% end %>
-      </tr>
-      </table>
-    </div>
-
-    <div class="explanation_box">
-      <%= circle.label :explanation, "説明文" %>
-      <div class="cicle_explanation">
-        <%= @circle.explanation %>
+    <div class="col-xs-6">
+      <div class="circle_item">
+        <table class="table">
+          <tr>
+            <th><%= circle.label :active_area, "メンバー" %>:</th>
+            <td><%= @circle.circle_joins.count %>人</td>
+          </tr>
+          <tr>
+            <th><%= circle.label :active_area, "活動地域" %></th>
+            <td><%= @circle.active_area %></td>
+          </tr>
+          <tr>
+            <th><%= circle.label :area_show, "活動地域詳細" %>：</th>
+            <% if @circle.area_show.blank? %>
+              <td>なし</td>
+            <% else %>
+              <td><%= @circle.area_show %></td>
+            <% end %>
+          </tr>
+          <tr>
+            <th><%= circle.label :age_group, "募集年齢層" %></th>
+            <td><%= @circle.age_group %></td>
+          </tr>
+          <tr>
+            <th><%= circle.label :recruitment, "募集人数" %>：</th>
+            <td><%= @circle.recruitment %>人</td>
+          </tr>
+          <tr>
+            <th><%= circle.label :cost, "費用" %>：</th>
+            <% if @circle.cost == nil %>
+              <td>無料</td>
+            <% else %>
+              <td>¥<%= @circle.cost %></td>
+            <% end %>
+          </tr>
+        </table>
       </div>
-    </div>
 
-<div class="admin_button">
-  <%= link_to "サークルを解散させる", " /admins/circles/#{@circle.id}", method: :delete, class: 'btn btn-warning' %><br>
-</div>
-  </div>
+      <div class="explanation_box">
+        <%= circle.label :explanation, "説明文" %>
+        <div class="cicle_explanation">
+          <%= @circle.explanation %>
+        </div>
+      </div>
+
+      <div class="admin_button">
+        <%= link_to "サークルを解散させる", " /admins/circles/#{@circle.id}", method: :delete, class: 'btn btn-warning' %><br>
+      </div>
+
+    </div>
   <% end %>
 </div>

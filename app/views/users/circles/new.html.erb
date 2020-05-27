@@ -1,5 +1,4 @@
 <h2>新規サークル作成</h2>
-
 <%= form_for [:users, @circle] do |circle| %>
   <div class="row">
     <div class="col-xs-6">
@@ -44,23 +43,23 @@
               <%= attachment_image_tag @circle, :circle_img_id, format: 'jpeg',fallback: "no_image.jpeg",size:"300x180" %>
             </div>
           </td>
-          </tr>
-          <tr>
-            <td><%= circle.attachment_field :circle_img %></td>
-          </tr>
-          <tr>
-            <td><%= circle.label :explanation, "説明文" %> (必項)</td>
-          </tr>
-          <tr>
-            <td><%= circle.text_area :explanation, size: "65x8" %></td>
-          </tr>
-          <tr>
-            <td>
-              <div class="create_button">
-                <%= circle.submit('サークル作成', class: "btn btn-primary") %>
-              </div>
-            </td>
-          </tr>
+        </tr>
+        <tr>
+          <td><%= circle.attachment_field :circle_img %></td>
+        </tr>
+        <tr>
+          <td><%= circle.label :explanation, "説明文" %> (必項)</td>
+        </tr>
+        <tr>
+          <td><%= circle.text_area :explanation, size: "65x8" %></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="create_button">
+              <%= circle.submit('サークル作成', class: "btn btn-primary") %>
+            </div>
+          </td>
+        </tr>
       </table>
     </div>
   </div>

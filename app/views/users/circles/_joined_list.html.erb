@@ -5,17 +5,15 @@
 <div class="joind_list">
   <div class="panel panel-primary">
     <% @circles_joined.each do |circle| %>
-
       <div class="panel-heading">
         <h4 class="panel-title"><strong><%= circle.circle_name %></strong></h4>
       </div>
-
       <div class="panel-body">
         <div class="circle_list_img">
           <% if admin_signed_in? %>
             <%= link_to admins_circle_path(circle.id) do %>
-            <%= attachment_image_tag circle, :circle_img, :fill, 80, 60, format: 'jpeg' %>
-          <% end %>
+              <%= attachment_image_tag circle, :circle_img, :fill, 80, 60, format: 'jpeg' %>
+            <% end %>
           <% elsif (controller.controller_name == 'host_circles' && controller.action_name == 'joining_show') || (controller.controller_name == 'circles' && controller.action_name == 'join_room') %>
             <%= link_to users_circle_join_room_path(circle.id) do %>
               <%= attachment_image_tag circle, :circle_img, :fill, 80, 60, format: 'jpeg' %>
@@ -26,7 +24,6 @@
             <% end %>
           <% end %>
         </div>
-
         <div class="circle_report">
           ジャンル：<%= circle.genre %><br>
           メンバー数：<%= circle.circle_joins.count %>人<br>
@@ -40,7 +37,6 @@
             <% end %>
           <% end %>
         </div>
-
         <div class="host_icon">
           <% if admin_signed_in? %>
             <%= link_to admins_user_path(circle.user.id) do %>
@@ -52,12 +48,11 @@
             <% end %>
           <% end %>
         </div>
-
       </div>
     <% end %>
   </div>
   <% if controller.controller_name != 'users' && controller.action_name  != 'show' %>
     <%= paginate @circles_joined %>
-<% end %>
+  <% end %>
 </div>
 
