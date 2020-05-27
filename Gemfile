@@ -59,6 +59,9 @@ group :test do
   gem 'rails-controller-testing'  #追加
   gem 'minitest'                  #追加
   gem 'minitest-reporters'        #追加
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -82,14 +85,6 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-puma'
   gem 'capistrano-rbenv'
-end
-
-#AWS用のgem
-group :test do
-  gem 'capybara', '>= 2.15'
-  gem 'rspec-rails'
-  gem "factory_bot_rails"
-  gem 'faker'
 end
 
 gem 'dotenv-rails'
