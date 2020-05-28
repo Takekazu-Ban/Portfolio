@@ -1,18 +1,26 @@
 <div class="row">
   <div class="col-xs-9">
     <h5>新着サークル</h5>
-    <%= render 'users/home_list',circles: @circles %>
+    <%= render 'users/home_list',circles: @new %>
     <h5>人気サークル</h5>
-    <%= render 'users/home_list',circles: @circles1 %>
+    <%= render 'users/home_list',circles: @popularity %>
   </div>
 
   <div class="col-xs-3">
     <%= render 'users/circles/search' %>
     <div class="index_go">
-      <%= link_to users_circle_index_path(@circle.ids), method: :get do %>
-        <h4>サークル一覧へ
-        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-        </h4>
+      <%if @circle.ids == 0 %>
+        <%= link_to users_circle_index_path(@circle.ids), method: :get do %>
+          <h4>サークル一覧へ
+          <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+          </h4>
+        <% end %>
+      <% else %>
+          <%= link_to users_circle_index_path(1), method: :get do %>
+            <h4>サークル一覧へ
+            <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+            </h4>
+          <% end %>
       <% end %>
     </div>
   </div>

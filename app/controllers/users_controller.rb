@@ -3,8 +3,8 @@ class UsersController < ApplicationController
 
   def home
     @circle = Circle.all
-    @circles = Circle.all.order(created_at: :desc).limit(5)
-    @circles1 = Circle.find(Join.group(:circle_id).order('count(circle_id) desc').limit(5).pluck(:circle_id))
+    @new = Circle.all.order(created_at: :desc).limit(5)
+    @popularity = Circle.find(Join.group(:circle_id).order('count(circle_id) desc').limit(5).pluck(:circle_id))
   end
 
   def show
