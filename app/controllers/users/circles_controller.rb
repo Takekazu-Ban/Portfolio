@@ -1,12 +1,19 @@
 class Users::CirclesController < ApplicationController
   before_action :authenticate_user!
-
   def new
     @circle = Circle.new
   end
 
   def index
-    @circles = Circle.all.search(params[:search])
+    if(params[:newly] == 2)
+      @circles = Circle.all.search(params[:search]).order(created_at: :asc)
+    elsif(params[:newly] == 3)
+      @circles = Circle.find(Join.group(:circle_id).order('count(circle_id) asc').pluck(:circle_id))
+    elsif(params[:newly] == 4)
+      @circles = Circle.find(Join.group(:circle_id).order('count(circle_id) desc').pluck(:circle_id))
+    else
+      @circles = Circle.all.search(params[:search]).order(created_at: :desc)
+
       if params[:genres].present?
         @circles = @circles.get_by_genre(params[:genres])
       end
@@ -16,6 +23,7 @@ class Users::CirclesController < ApplicationController
       if params[:age_groups].present?
         @circles = @circles.get_by_age_group(params[:age_groups])
       end
+    end
   end
 
   def show

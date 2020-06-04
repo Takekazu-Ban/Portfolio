@@ -1,9 +1,13 @@
 <% if params[:search] %>
-  <h4>検索結果 &emsp; （ <%= circles.count %>件）</h4>
+  <div class="seach_box">
+    <h4>&ensp;検索結果（ <%= circles.count %>件)&emsp;
+      <%= select_tag :newly, options_for_select([["投稿が新しい順","1"], ["投稿が古い順","2"], ["人気が高い順","3"], ["人気が低い順","4"]]) %>
+    </h4>
+  </div>
 <% elsif current_page?('/admins/circles') %>
   <h4>サークル 一覧</h4>
 <% else %>
-  <h4>サークル 一覧 &emsp; （ <%= circles.count %>件）</h4>
+  <h4>サークル 一覧 &emsp;（ <%= circles.count %>件）</h4>
 <% end %>
 
 <div class="index_list">

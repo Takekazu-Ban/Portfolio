@@ -5,49 +5,62 @@
 <div class="organizer_list">
   <div class="panel panel-primary">
     <% @circles.each do |circle| %>
-    <div class="panel-heading">
-      <h4 class="panel-title"><strong><%= circle.circle_name %></strong></h4>
-    </div>
-    <div class="panel-body">
-      <div class="circle_list_img">
-        <% if admin_signed_in? %>
-          <%= link_to admins_circle_path(circle.id) do %>
-            <%= attachment_image_tag circle, :circle_img, :fill, 80, 60, format: 'jpeg' %>
-        <% end %>
-        <% elsif (controller.controller_name == 'host_circles' && controller.action_name == 'show') || (controller.controller_name == 'circles' && controller.action_name == 'host_room') %>
-          <%= link_to users_circle_host_room_path(circle.id) do %>
-            <%= attachment_image_tag circle, :circle_img, :fill, 80, 60, format: 'jpeg' %>
-          <% end %>
+      <div class="panel-heading">
+        <% if %>
+          <h4 class="panel-title">
+            <strong>
+              <%= circle.circle_name %>
+              <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+            </strong>
+          </h4>
         <% else %>
-          <%= link_to users_circle_path(circle.id) do %>
-            <%= attachment_image_tag circle, :circle_img, :fill, 80, 60, format: 'jpeg' %>
-          <% end %>
+          <h4 class="panel-title">
+            <strong>
+              <%= circle.circle_name %>
+            </strong>
+          </h4>
         <% end %>
       </div>
-      <div class="circle_report">
-        ジャンル：<%= circle.genre %><br>
-        メンバー数：<%= circle.circle_joins.count %>人<br>
-        活動地域：<%= circle.active_area %>&emsp;
-        <% if (controller.controller_name != 'users' && controller.action_name  != 'show') || (controller.controller_name == 'host_circles') %>
-            活動地域詳細：
-            <% if circle.area_show.blank? %>
-              <td>なし</td>
-            <% else %>
-              <td><%= circle.area_show %></td>
+      <div class="panel-body">
+        <div class="circle_list_img">
+          <% if admin_signed_in? %>
+            <%= link_to admins_circle_path(circle.id) do %>
+              <%= attachment_image_tag circle, :circle_img, :fill, 80, 60, format: 'jpeg' %>
+          <% end %>
+          <% elsif (controller.controller_name == 'host_circles' && controller.action_name == 'show') || (controller.controller_name == 'circles' && controller.action_name == 'host_room') %>
+            <%= link_to users_circle_host_room_path(circle.id) do %>
+              <%= attachment_image_tag circle, :circle_img, :fill, 80, 60, format: 'jpeg' %>
             <% end %>
-        <% end %>
-      </div>
-      <div class="host_authorize">
-        <% if current_user == circle.user %>
-          <%= link_to edit_users_circle_path(circle.id) do %>
-            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>編集
-          <% end %>&ensp;
-          <%= link_to users_circle_path(circle.id), method: :delete do %>
-            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>削除
+          <% else %>
+            <%= link_to users_circle_path(circle.id) do %>
+              <%= attachment_image_tag circle, :circle_img, :fill, 80, 60, format: 'jpeg' %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+        <div class="circle_report">
+          ジャンル：<%= circle.genre %><br>
+          メンバー数：<%= circle.circle_joins.count %>人<br>
+          活動地域：<%= circle.active_area %>&emsp;
+          <% if (controller.controller_name != 'users' && controller.action_name  != 'show') || (controller.controller_name == 'host_circles') %>
+              活動地域詳細：
+              <% if circle.area_show.blank? %>
+                <td>なし</td>
+              <% else %>
+                <td><%= circle.area_show %></td>
+              <% end %>
+          <% end %>
+        </div>
+        <div class="host_authorize">
+          <% if current_user == circle.user %>
+            <%= link_to edit_users_circle_path(circle.id) do %>
+              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>編集
+            <% end %>&ensp;
+            <%= link_to users_circle_path(circle.id), method: :delete do %>
+              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>削除
+            <% end %>
+          <% end %>
+        </div>
       </div>
-    </div>
     <% end %>
   </div>
   <% if (controller.controller_name != 'users' && controller.action_name  != 'show') || (controller.controller_name == 'host_circles') %>
