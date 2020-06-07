@@ -6,20 +6,11 @@
   <div class="panel panel-primary">
     <% @circles.each do |circle| %>
       <div class="panel-heading">
-        <% if %>
-          <h4 class="panel-title">
-            <strong>
-              <%= circle.circle_name %>
-              <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-            </strong>
-          </h4>
-        <% else %>
-          <h4 class="panel-title">
-            <strong>
-              <%= circle.circle_name %>
-            </strong>
-          </h4>
-        <% end %>
+        <h4 class="panel-title">
+          <strong>
+            <%= circle.circle_name %>
+          </strong>
+        </h4>
       </div>
       <div class="panel-body">
         <div class="circle_list_img">

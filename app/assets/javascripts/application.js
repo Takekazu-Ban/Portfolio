@@ -14,5 +14,6 @@
 //= require activestorage
 
 //= require jquery
+//= repuire jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
