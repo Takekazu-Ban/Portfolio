@@ -6,23 +6,13 @@ class Users::CirclesController < ApplicationController
 
   def index
     if(params[:newly] == 2)
-      @circles = Circle.all.search(params[:search]).order(created_at: :asc)
+    @circles = Circle.all.search(params[:search]).order(created_at: :asc)
     elsif(params[:newly] == 3)
-      @circles = Circle.find(Join.group(:circle_id).order('count(circle_id) asc').pluck(:circle_id))
+    @circles = Circle.find(Join.group(:circle_id).order('count(circle_id) asc').pluck(:circle_id))
     elsif(params[:newly] == 4)
-      @circles = Circle.find(Join.group(:circle_id).order('count(circle_id) desc').pluck(:circle_id))
+    @circles = Circle.find(Join.group(:circle_id).order('count(circle_id) desc').pluck(:circle_id))
     else
-      @circles = Circle.all.search(params[:search]).order(created_at: :desc)
-
-      if params[:genres].present?
-        @circles = @circles.get_by_genre(params[:genres])
-      end
-      if params[:active_areas].present?
-        @circles = @circles.get_by_active_area(params[:active_areas])
-      end
-      if params[:age_groups].present?
-        @circles = @circles.get_by_age_group(params[:age_groups])
-      end
+    @circles = Circle.all.search(params[:search]).order(created_at: :desc)
     end
   end
 
@@ -36,6 +26,7 @@ class Users::CirclesController < ApplicationController
     @circle = Circle.find(params[:circle_id])
     @message = HostCircle.new
     @messages = @circle.host_circles
+    @circle_user = Circle.find(params[:circle_id]).circle_joins
   end
 
   def join_room
@@ -44,6 +35,7 @@ class Users::CirclesController < ApplicationController
     @circle = Circle.find(params[:circle_id])
     @message = HostCircle.new
     @messages = @circle.host_circles
+    @circle_user = Circle.find(params[:circle_id]).circle_joins
   end
 
   def edit
@@ -79,6 +71,6 @@ class Users::CirclesController < ApplicationController
 
   private
   def circle_params
-    params.require(:circle).permit(:genre, :active_area, :age_group, :circle_name, :circle_img, :explanation, :area_show, :recruitment, :cost, :count, :join_user)
+    params.require(:circle).permit(:genre, :active_area, :age_group, :circle_name, :circle_img, :explanation, :area_show, :recruitment, :cost, :count, :circle_joins)
   end
 end

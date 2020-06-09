@@ -6,7 +6,7 @@
 //------チャットフォーマット------//
 .chat_field {
   padding: 20px 10px;
-  height: 400px;
+  height: 390px;
   margin: 0 auto 0;
   text-align: right;
   background: #7da4cd;
@@ -25,7 +25,7 @@
 
 /*------ サークル名 ------*/
 .circle_name{
-  margin-top: 30px;
+  margin-top: 10px;
   height: 50px;
   padding: 5px;
   text-align: center;
@@ -127,6 +127,30 @@
   width: 50px;
   height: 30px;
   border-radius: 30px;
+}
+
+//------ 主催サークル画面 ------//
+.member {
+  height: 50px;
+}
+
+.member_count {
+  float: left;
+  width: 20%;
+  height: 50px;
+  text-align: right;
+  padding: 5px 5% 5px 0;
+  background: #0000CD;
+  color: #FFF;
+}
+
+.member_img {
+  width: 80%;
+  height: 50px;
+  display:flex;
+  overflow-x:scroll;
+  padding: 5px;
+  background: #0066FF;
 }
 
 
