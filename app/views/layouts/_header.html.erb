@@ -2,6 +2,7 @@
   <!-- Userログイン後 -->
   <% if user_signed_in? %>
     <nav class='nav navbar-nav navbar-left' >
+      <%= link_to "＜", :back, class: "btn btn-primary btn-xs" %>
       <%= link_to user_home_path(current_user.id) do %>
         <%= image_tag "MEMBERS.jpeg", size: "100x100" %>
       <% end %>

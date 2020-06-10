@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # @circle = Circle.find(params[:id])
+    # @join = Join.find(params[:id])
     if (controller_name != 'users' && action_name  != 'show') || (controller_name == 'host_circles')
       @circles = @user.circles.page(params[:page]).per(5)
       @circles_joined = @user.joined_circles.page(params[:page]).per(5)

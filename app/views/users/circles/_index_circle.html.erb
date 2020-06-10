@@ -1,15 +1,15 @@
 <% if params[:search] %>
-  <table class="seach_box">
-    <th>
+  <!-- <table class="seach_box">
+    <th> -->
       <h4>&ensp;検索結果（ <%= circles.count %>件)&emsp;</h4>
-    </th>
+    <!-- </th>
     <th>
       <%= select_tag :newly, options_for_select([["投稿が新しい順","1"], ["投稿が古い順","2"], ["人気が高い順","3"], ["人気が低い順","4"]]) %>
     </th>
     <th>
       <%= submit_tag '並び替え' %>
     </th>
-  </table>
+  </table> -->
 
 <% elsif current_page?('/admins/circles') %>
   <h4>サークル 一覧</h4>
