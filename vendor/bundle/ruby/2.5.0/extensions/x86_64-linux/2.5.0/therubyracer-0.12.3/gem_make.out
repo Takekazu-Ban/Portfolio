@@ -1,0 +1,49 @@
+current directory: /vagrant/portfolio/vendor/bundle/ruby/2.5.0/gems/therubyracer-0.12.3/ext/v8
+/usr/bin/ruby2.5 -r ./siteconf20200610-29409-1mspd7.rb extconf.rb
+checking for -lpthread... yes
+creating Makefile
+
+current directory: /vagrant/portfolio/vendor/bundle/ruby/2.5.0/gems/therubyracer-0.12.3/ext/v8
+make "DESTDIR=" clean
+make: Warning: File 'Makefile' has modification time 665 s in the future
+make: warning:  Clock skew detected.  Your build may be incomplete.
+
+current directory: /vagrant/portfolio/vendor/bundle/ruby/2.5.0/gems/therubyracer-0.12.3/ext/v8
+make "DESTDIR="
+make: Warning: File 'Makefile' has modification time 665 s in the future
+compiling accessor.cc
+compiling array.cc
+compiling backref.cc
+compiling constants.cc
+compiling constraints.cc
+compiling context.cc
+compiling date.cc
+compiling exception.cc
+compiling external.cc
+compiling function.cc
+compiling gc.cc
+compiling handles.cc
+compiling heap.cc
+compiling init.cc
+compiling invocation.cc
+compiling locker.cc
+compiling message.cc
+compiling object.cc
+compiling primitive.cc
+compiling rr.cc
+compiling script.cc
+compiling signature.cc
+compiling stack.cc
+compiling string.cc
+compiling template.cc
+compiling trycatch.cc
+compiling v8.cc
+compiling value.cc
+linking shared-object v8/init.so
+make: warning:  Clock skew detected.  Your build may be incomplete.
+
+current directory: /vagrant/portfolio/vendor/bundle/ruby/2.5.0/gems/therubyracer-0.12.3/ext/v8
+make "DESTDIR=" install
+make: Warning: File 'Makefile' has modification time 633 s in the future
+/usr/bin/install -c -m 0755 init.so ./.gem.20200610-29409-xy8q72/v8
+make: warning:  Clock skew detected.  Your build may be incomplete.

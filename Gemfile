@@ -61,7 +61,6 @@ group :test do
   gem 'minitest-reporters'        #追加
   gem 'rspec-rails'
   gem "factory_bot_rails"
-  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
