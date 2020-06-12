@@ -34,14 +34,16 @@ namespace :users do
     get :host_room
     get :join_room
   end
+  resources :inquiries, only: [:index, :show, :create]
   resources :host_circles, only: [:show, :create] do
     get :joining_show
   end
-  resources :messages, only: [:crete]
+  #resources :messages, only: [:crete]
 end
 
   namespace :admins do
   resources :circles, only: [:index, :show, :destroy]
+  resources :inquiries, only: [:index, :show, :create]
   resources :users, only: [:index, :show, :destroy] do
   patch :delete
   end

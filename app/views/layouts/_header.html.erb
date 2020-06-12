@@ -15,6 +15,7 @@
         <%= link_to "サークル作成", new_users_circle_path(current_user.id), class: "btn btn-info btn-lg" %>
         <%= link_to "主催サークル",users_host_circle_path(current_user.id), class: "btn btn-info btn-lg" %>
         <%= link_to "参加サークル", users_host_circle_joining_show_path(current_user.id), class: "btn btn-info btn-lg" %>
+        <%= link_to "問い合わせ", users_inquiry_path(current_user.id), class: "btn btn-info btn-lg" %>
         <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-danger btn-lg", method: :delete %>
       </div>
     </nav>

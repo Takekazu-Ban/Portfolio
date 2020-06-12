@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_08_070959) do
+ActiveRecord::Schema.define(version: 2020_06_12_052159) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -44,11 +44,28 @@ ActiveRecord::Schema.define(version: 2020_06_08_070959) do
     t.integer "host_circle_id"
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "host_circles", force: :cascade do |t|
     t.integer "user_id"
     t.integer "circle_id"
     t.integer "join_id"
     t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "inquiries", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "admin_id"
+    t.string "title"
+    t.string "question"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

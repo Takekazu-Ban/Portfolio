@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h2>お問い合わせ履歴</h2>
+    <% @inquiries.each do |q| %>
+      <%= q.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+      件名：<%= q.title %>
+      質問：<%= q.question %>
+    <% end %>
+  </div>
+  <div class="col-xs-6">
+    <h2>お問い合わせ</h2>
+    <%= form_for [:users, @inquiry] do |q| %>
+      <table class="new_inquiry">
+        <tr>
+          <th><%= q.label :title, "件名" %></th>
+          <th><%= q.text_field :title %></th>
+        </tr>
+        <tr>
+          <th><%= q.label :question, "質問" %></th>
+          <th><%= q.text_area :question %></th>
+        </tr>
+        <tr>
+          <th><%= q.submit '送信' %></th>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</div>
