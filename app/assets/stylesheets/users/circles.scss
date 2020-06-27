@@ -17,6 +17,7 @@
 }
 
 //------ 検索フォーム ------//
+/* すべての画面サイズで適用される設定 */
 .search_field {
   position: fixed;
   margin: 0 auto;
@@ -38,11 +39,34 @@
   margin-top: 15px;
   }
 
+/* タブレット縦置きサイズ（767px）以下の際に適用される設定 */
+@media screen and (max-width:767px) {
+  .search_field {
+  margin: 0 auto;
+  padding: 5px;
+  top: 140px;
+  width: 100%;
+  height: 300px;
+  background: #87CEFA;
+}
+
+.search_field input[type="text"] {
+  width: 100%;
+  height: 20px;
+  }
+
+.search_field input[type="submit"] {
+  width: 30%;
+  height: 25px;
+  margin-top: 10px;
+  }
+}
+
 //------ サークル新規作成画面 ------//
 .new_circle_item {
   border-collapse: separate;
   border-spacing: 0px 20px;
-}
+  }
 
 .new_circle input[type="text"] {
   width: 200px;

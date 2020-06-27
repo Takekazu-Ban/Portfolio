@@ -42,6 +42,15 @@ class Circle < ApplicationRecord
     circle_joins.where(user_id: user.id).exists?
   end
 
+  # 並び替え
+   scope :get_by_created_at, ->(created_at) {
+     order(created_at: :desc)
+   }
+
+  scope :get_by_count, ->(count) {
+    order(count: :desc)
+  }
+
   # サークル各選択項目
   enum active_area: {北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
     茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,
@@ -54,4 +63,7 @@ class Circle < ApplicationRecord
   enum genre: {スポーツ:1,遊ぶ:2,食べる:3,学ぶ:4,つくる:5,ゲーム:6,音楽:7,その他:8}
   enum age_group: {'指定しない':'指定しない','20代':'20代','30代':'30代','40代':'40代','50代以上':'50代以上'}
 
+  # 並び替え各選択項目
+  enum created_at: {投稿が新しい順:1,投稿が古い順:2}
+  enum count: {人気が高い順:1,人気が低い順:2}
 end

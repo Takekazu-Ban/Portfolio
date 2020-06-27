@@ -3,6 +3,7 @@ class Users::InquiriesController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
     @inquiry = Inquiry.new
     @inquiries = Inquiry.all
   end

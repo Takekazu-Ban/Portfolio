@@ -1,7 +1,7 @@
 <h2>新規サークル作成</h2>
 <%= form_for [:users, @circle] do |circle| %>
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-md-6 col-xs-12">
       <table class="new_circle_item">
         <tr>
           <th><%= circle.label :genre, "ジャンル" %> (必項)</th>
@@ -34,7 +34,7 @@
       </table>
     </div>
 
-    <div class="col-xs-6">
+    <div class="col-md-6 col-xs-12">
       <table>
         <tr>
           <td>

@@ -1,15 +1,20 @@
 <% if params[:search] %>
-  <!-- <table class="seach_box">
-    <th> -->
-      <h4>&ensp;検索結果（ <%= circles.count %>件)&emsp;</h4>
-    <!-- </th>
+  <%= form_tag(users_circle_index_path, :method => 'get') do %>
+  <table class="seach_box">
     <th>
-      <%= select_tag :newly, options_for_select([["投稿が新しい順","1"], ["投稿が古い順","2"], ["人気が高い順","3"], ["人気が低い順","4"]]) %>
+      <h4>&ensp;検索結果（ <%= circles.count %>件)&emsp;</h4>
+    </th>
+    <th>
+      投稿順：<%= select_tag :created_ats, options_for_select(Circle.created_ats), include_blank: true %>
+    </th>
+    <th>
+      人気順：<%= select_tag :counts, options_for_select(Circle.counts), include_blank: true %>
     </th>
     <th>
       <%= submit_tag '並び替え' %>
     </th>
-  </table> -->
+  </table>
+  <% end %>
 
 <% elsif current_page?('/admins/circles') %>
   <h4>サークル 一覧</h4>

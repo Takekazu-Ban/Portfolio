@@ -1,22 +1,30 @@
 <div class="row">
   <div class="col-xs-6">
     <h2>お問い合わせ履歴</h2>
-    <% @inquiries.each do |q| %>
-      <%= q.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-      件名：<%= q.title %>
-      質問：<%= q.question %>
-    <% end %>
+<div class="panel panel-default">
+  <% @inquiries.each do |q| %>
+    <div class="panel-heading">
+      <%= q.created_at.strftime('%Y/%m/%d') %>
+    </div>
+    <div class="panel-body">
+      <strong>タイトル</strong><br>
+      <%= q.title %><br>
+      <strong>質問内容</strong><br>
+      <%= q.question %>
+    </div>
+  <% end %>
+</div>
   </div>
   <div class="col-xs-6">
     <h2>お問い合わせ</h2>
     <%= form_for [:users, @inquiry] do |q| %>
       <table class="new_inquiry">
         <tr>
-          <th><%= q.label :title, "件名" %></th>
+          <th><%= q.label :title, "タイトル" %></th>
           <th><%= q.text_field :title %></th>
         </tr>
         <tr>
-          <th><%= q.label :question, "質問" %></th>
+          <th><%= q.label :question, "質問内容" %></th>
           <th><%= q.text_area :question %></th>
         </tr>
         <tr>

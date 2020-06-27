@@ -12,7 +12,6 @@
 
 .user_top {
   width: 100%;
-  hight: 20%;
 }
 
 //------ エラー文 ------//
@@ -21,21 +20,38 @@
 }
 
 //------ 新規会員登録画面 -------//
+/* すべての画面サイズで適用される設定 */
 .sign_up {
   margin: 0 20%;
   padding-top: 30px
 }
+/* タブレット縦置きサイズ以下の際に適用される設定 */
+@media screen and (max-width: 991px) {
+  .sign_up {
+    margin: 0 auto;
+    padding-top: 10px
+  }
+}
 
 //------- ログイン画面 -------//
+/* すべての画面サイズで適用される設定 */
 .field {
   margin: 0 30%;
   padding-top: 30px
 }
-
 .actions {
   margin: 0 30% 30px;
 }
-
+/* スマートフォンサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width:768px) {
+  .field {
+    margin: 0 20%;
+    padding-top: 30px
+  }
+  .actions {
+    margin: 0 30% 30px;
+  }
+}
 
 //------ ログイン後画面 ------//
 .genle{
@@ -47,6 +63,9 @@
   font-size: 85%;
   color: #FFF;
   background: #4169E1;
+}
+
+.search {
 }
 
 .index_go {

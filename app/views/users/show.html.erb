@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-6">
+  <div class="col-md-6 col-xs-12">
     <h2>プロフィール</h2>
       <div class="profile">
         <div class="profile_img">
@@ -27,8 +27,9 @@
                 <span class="glyphicon glyphicon-cog" aria-hidden="true">プロフィール編集</span>
               <% end %>
             <!--% elsif request.referer&.include?("/host_room") %-->
-              <!--%= link_to "/users/circles/#{@circle.id}/joins/#{@join.id}/delete", method: :delete, class: 'btn btn-danger' do %-->
-                <!--span class="glyphicon glyphicon-remove" aria-hidden="true">メンバーから外す</span-->
+              <!--%= link_to "/users/circles/#{@circle.id}/joins/#{@join.id}/delete", method: :patch, class: 'btn btn-danger' do %-->
+              <!--%= link_to  users_circle_join_path(@circle.id), method: :delete, class: 'btn btn-danger' do %-->
+                  <!-- <span class="glyphicon glyphicon-remove" aria-hidden="true">メンバーから外す</span> -->
               <!--% end %-->
             <% end %>
           </div>
@@ -41,22 +42,22 @@
       </div>
     </div>
 
-    <div class="col-xs-6">
+    <div class="col-md-6 col-xs-12">
       <div class="user_show_right">
         <div class="title_box">
           <h5>主催サークル</h5>
         </div>
-      <div class="list_box">
-        <%= render 'users/circles/organizer_list' %>
-      </div>
-      <div class="title_box">
-        <h5>参加サークル</h5>
-      </div>
-      <div class="list_box">
-        <%= render 'users/circles/joined_list' %>
+        <div class="list_box">
+          <%= render 'users/circles/organizer_list' %>
+        </div>
+        <div class="title_box">
+          <h5>参加サークル</h5>
+        </div>
+        <div class="list_box">
+          <%= render 'users/circles/joined_list' %>
+        </div>
       </div>
     </div>
-  </div>
 </div>
 
 

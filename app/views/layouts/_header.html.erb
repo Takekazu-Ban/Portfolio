@@ -1,4 +1,7 @@
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <header class="header bg-primary">
+  <div class="row">
   <!-- Userログイン後 -->
   <% if user_signed_in? %>
     <nav class='nav navbar-nav navbar-left' >
@@ -8,14 +11,14 @@
       <% end %>
     </nav>
     <nav class='nav navbar-nav navbar-right' >
-      <div class="header_icon">
+      <div class="header_menu">
         <%= link_to user_path(current_user.id) do %>
           <%= attachment_image_tag current_user, :profile_image, :fill, 70, 70, format: 'jpeg',fallback: "no_image.jpeg",size:"70x70" , class: "img-circle" %>
         <% end %>
         <%= link_to "サークル作成", new_users_circle_path(current_user.id), class: "btn btn-info btn-lg" %>
         <%= link_to "主催サークル",users_host_circle_path(current_user.id), class: "btn btn-info btn-lg" %>
         <%= link_to "参加サークル", users_host_circle_joining_show_path(current_user.id), class: "btn btn-info btn-lg" %>
-        <%= link_to "問い合わせ", users_inquiry_path(current_user.id), class: "btn btn-info btn-lg" %>
+        <!--%= link_to "問い合わせ", users_inquiry_path(current_user.id), class: "btn btn-info btn-lg" %-->
         <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-danger btn-lg", method: :delete %>
       </div>
     </nav>
@@ -28,7 +31,7 @@
       <% end %>
     </nav>
     <nav class='nav navbar-nav navbar-right' >
-      <div class="header_icon">
+      <div class="header_menu">
         <%= link_to "サークル一覧",admins_circles_path, class: "btn btn-info btn-lg" %>
         <%= link_to "会員一覧", admins_users_path, class: "btn btn-info btn-lg" %>
         <%= link_to "ログアウト", destroy_admin_session_path, class: "btn btn-danger btn-lg", method: :delete %>
@@ -37,29 +40,42 @@
 
   <!-- Adminログイン前 -->
   <% elsif (controller.controller_name == 'admins') || current_page?('/admins/sign_in') || current_page?('/admins/password/new') %>
-    <nav class='nav navbar-nav navbar-left' >
-      <%= link_to top_admin_path do %>
-        <%= image_tag "MEMBERS.jpeg", size: "100x100" %>
-      <% end %>
-    </nav>
-    <nav class='nav navbar-nav navbar-right' >
-      <div class="header_icon">
-        <%= link_to "ログイン",new_admin_session_path, class: "btn btn-info btn-lg" %>
-      </div>
-    </nav>
+    <div class="col-xs-4">
+      <nav class='nav navbar-nav navbar-left' >
+        <div class="header_icon">
+          <%= link_to top_admin_path do %>
+            <%= image_tag "MEMBERS.jpeg", size: "100x100" %>
+          <% end %>
+        </div>
+      </nav>
+    </div>
+    <div class="col-xs-8">
+      <nav class='nav navbar-nav navbar-right' >
+        <div class="header_menu">
+          <%= link_to "ログイン",new_admin_session_path, class: "btn btn-info btn-lg" %>
+        </div>
+      </nav>
+    </div>
 
     <!-- Userログイン前 -->
     <% else %>
-    <nav class='nav navbar-nav navbar-left' >
-      <%= link_to root_path do %>
-      <%= image_tag "MEMBERS.jpeg", size: "100x100" %>
-      <% end %>
-    </nav>
-    <nav class='nav navbar-nav navbar-right' >
-      <div class="header_icon">
-        <%= link_to "新規登録",new_user_registration_path, class: "btn btn-info btn-lg" %>
-        <%= link_to "ログイン",new_user_session_path, class: "btn btn-info btn-lg" %>
-      </div>
-    </nav>
+    <div class="col-xs-4">
+      <nav class='nav navbar-nav navbar-left' >
+        <div class="header_icon">
+          <%= link_to root_path do %>
+          <%= image_tag "MEMBERS.jpeg", size: "100x100" %>
+          <% end %>
+        </div>
+      </nav>
+    </div>
+    <div class="col-xs-8">
+      <nav class='nav navbar-nav navbar-right' >
+        <div class="header_menu">
+          <%= link_to "新規登録",new_user_registration_path, class: "btn btn-info btn-lg" %>
+          <%= link_to "ログイン",new_user_session_path, class: "btn btn-info btn-lg" %>
+        </div>
+      </nav>
+    </div>
   <% end %>
+  </div>
 </header>

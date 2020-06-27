@@ -5,14 +5,31 @@ class Users::CirclesController < ApplicationController
   end
 
   def index
-    if(params[:newly] == 2)
-    @circles = Circle.all.search(params[:search]).order(created_at: :asc)
-    elsif(params[:newly] == 3)
-    @circles = Circle.find(Join.group(:circle_id).order('count(circle_id) asc').pluck(:circle_id))
-    elsif(params[:newly] == 4)
-    @circles = Circle.find(Join.group(:circle_id).order('count(circle_id) desc').pluck(:circle_id))
-    else
-    @circles = Circle.all.search(params[:search]).order(created_at: :desc)
+    # if(params[:newly] == 2)
+    # @circles = Circle.all.search(params[:search]).order(created_at: :asc)
+    # elsif(params[:newly] == 3)
+    # @circles = Circle.find(Join.group(:circle_id).order('count(circle_id) asc').pluck(:circle_id))
+    # elsif(params[:newly] == 4)
+    # @circles = Circle.find(Join.group(:circle_id).order('count(circle_id) desc').pluck(:circle_id))
+    # else
+    # @circles = Circle.all.search(params[:search]).order(created_at: :desc)
+    # end
+    @circles = Circle.all.search(params[:search])
+    if params[:genres].present?
+      @circles = @circles.get_by_genre(params[:genres])
+    end
+    if params[:active_areas].present?
+      @circles = @circles.get_by_active_area(params[:active_areas])
+    end
+    if params[:age_groups].present?
+      @circles = @circles.get_by_age_group(params[:age_groups])
+    end
+
+    if params[:created_ats].present?
+      @circles = @circles.get_by_created_at(params[:created_ats])
+    end
+    if params[:counts].present?
+      @circles = @circles.get_by_count(params[:counts])
     end
   end
 

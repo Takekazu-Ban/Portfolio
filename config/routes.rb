@@ -28,7 +28,7 @@ end
 namespace :users do
   resources :circles, only: [:new, :edit, :show, :create, :update, :destroy] do
     resources :joins, only: [:create, :destroy] do
-     delete :delete
+      #patch :delete
     end
     get :index
     get :host_room
@@ -43,9 +43,9 @@ end
 
   namespace :admins do
   resources :circles, only: [:index, :show, :destroy]
-  resources :inquiries, only: [:index, :show, :create]
+  resources :inquiries, only: [:show, :create]
   resources :users, only: [:index, :show, :destroy] do
-  patch :delete
+  #patch :delete
   end
 end
 

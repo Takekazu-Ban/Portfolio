@@ -1,5 +1,22 @@
 <h3>管理者ページにようこそ！</h3>
 
+<!-- <h2>お問い合わせ履歴</h2>
+<div class="panel panel-default">
+  <% @inquiries.each do |q| %>
+    <% link_to admins_circles_path do %>
+      <div class="panel-heading">
+        <%= q.created_at.strftime('%Y/%m/%d') %>
+      </div>
+    <% end %>
+      <div class="panel-body">
+        <strong>タイトル</strong><br>
+        <%= q.title %><br>
+        <strong>質問内容</strong><br>
+        <%= q.question %>
+      </div>
+  <% end %>
+</div> -->
+
 <div class="admin_top">
   <%= image_tag asset_path("user_top.jpeg"), :size =>'1130x400' %>
 </div>

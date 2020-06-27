@@ -1,13 +1,21 @@
 .title {
   text-align: center;
-}
+  }
 
 .explanation {
   text-align: left;
  }
 
+//------ レスポンシブ対応 ------//
+/* すべての画面サイズで適用される設定 */
 .user_go {
   float: right;
   margin: -120px 20px 0 0;
-}
+  }
+/* タブレット横置きサイズ以下の際に適用される設定 */
+@media screen and (max-width:990px) {
+.user_go {
+  float: none;
+  margin-top: 30px;
+  }
 
